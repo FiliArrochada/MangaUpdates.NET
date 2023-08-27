@@ -10,7 +10,7 @@ jobs:
     timeout-minutes: 5
     defaults:
       run:
-        working-directory: ./generated
+        working-directory: generated
     steps:
     - name: Checkout
       uses: actions/checkout@v2
