@@ -1,0 +1,10 @@
+# To generate the client:
+# openapi-generator-cli generate -g csharp-netcore -i openapi.yaml -c openapi-dotnet.yaml -o generated/ --type-mappings integer=long
+
+# To build & pack for Nuget
+# (TODO Move this into a github action - preferably along with generation)
+# dotnet pack -c Release -p:PackageVersion=0.1.0 -p:PackageLicenseExpression=MIT .\generated\src\MangaUpdates\MangaUpdates.csproj
+
+packageName: MangaUpdates
+packageVersion: 0.1.0
+targetFramework: netstandard2.0
