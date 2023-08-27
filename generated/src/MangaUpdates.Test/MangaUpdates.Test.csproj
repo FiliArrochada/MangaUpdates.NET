@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>MangaUpdates.Test</AssemblyName>
     <RootNamespace>MangaUpdates.Test</RootNamespace>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;net7.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
