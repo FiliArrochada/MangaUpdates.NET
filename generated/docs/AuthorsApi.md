@@ -978,7 +978,7 @@ catch (ApiException e)
 
 <a id="updateimage"></a>
 # **UpdateImage**
-> ApiResponseV1 UpdateImage (long id, System.IO.Stream image = null)
+> ApiResponseV1 UpdateImage (long id, System.IO.Stream? image = null)
 
 update the image of an author
 
@@ -1003,7 +1003,7 @@ namespace Example
 
             var apiInstance = new AuthorsApi(config);
             var id = 789L;  // long | id of author
-            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Image to update (optional) 
+            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | Image to update (optional) 
 
             try
             {
@@ -1047,7 +1047,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **long** | id of author |  |
-| **image** | **System.IO.Stream****System.IO.Stream** | Image to update | [optional]  |
+| **image** | **System.IO.Stream?****System.IO.Stream?** | Image to update | [optional]  |
 
 ### Return type
 

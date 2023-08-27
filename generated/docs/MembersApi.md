@@ -135,7 +135,7 @@ catch (ApiException e)
 
 <a id="addmemberavatar"></a>
 # **AddMemberAvatar**
-> ApiResponseV1 AddMemberAvatar (long id, System.IO.Stream image = null, string title = null)
+> ApiResponseV1 AddMemberAvatar (long id, System.IO.Stream? image = null, string? title = null)
 
 add a new member avatar
 
@@ -160,8 +160,8 @@ namespace Example
 
             var apiInstance = new MembersApi(config);
             var id = 789L;  // long | Member id
-            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Image to update (optional) 
-            var title = "title_example";  // string | Title of the new avatar (optional) 
+            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | Image to update (optional) 
+            var title = "title_example";  // string? | Title of the new avatar (optional) 
 
             try
             {
@@ -205,8 +205,8 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **long** | Member id |  |
-| **image** | **System.IO.Stream****System.IO.Stream** | Image to update | [optional]  |
-| **title** | **string** | Title of the new avatar | [optional]  |
+| **image** | **System.IO.Stream?****System.IO.Stream?** | Image to update | [optional]  |
+| **title** | **string?** | Title of the new avatar | [optional]  |
 
 ### Return type
 
@@ -2826,7 +2826,7 @@ This endpoint does not need any parameter.
 
 <a id="searchmemberchangerequests"></a>
 # **SearchMemberChangeRequests**
-> UserChangeRequestSearchResponseV1 SearchMemberChangeRequests (long id, long? page = null, long? perpage = null, string orderby = null, string asc = null)
+> UserChangeRequestSearchResponseV1 SearchMemberChangeRequests (long id, long? page = null, long? perpage = null, string? orderby = null, string? asc = null)
 
 search change requests for a specific user
 
@@ -2853,8 +2853,8 @@ namespace Example
             var id = 789L;  // long | Member id
             var page = 56;  // long? | Start page (optional) 
             var perpage = 56;  // long? | Items per page (optional) 
-            var orderby = "score";  // string | order by field (optional)  (default to time)
-            var asc = "asc";  // string | Direction of results (optional)  (default to asc)
+            var orderby = "score";  // string? | order by field (optional)  (default to time)
+            var asc = "asc";  // string? | Direction of results (optional)  (default to asc)
 
             try
             {
@@ -2900,8 +2900,8 @@ catch (ApiException e)
 | **id** | **long** | Member id |  |
 | **page** | **long?** | Start page | [optional]  |
 | **perpage** | **long?** | Items per page | [optional]  |
-| **orderby** | **string** | order by field | [optional] [default to time] |
-| **asc** | **string** | Direction of results | [optional] [default to asc] |
+| **orderby** | **string?** | order by field | [optional] [default to time] |
+| **asc** | **string?** | Direction of results | [optional] [default to asc] |
 
 ### Return type
 

@@ -746,7 +746,7 @@ namespace MangaUpdates.Api
         /// <param name="image">Image to update (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        ApiResponseV1 UpdateSeriesImage(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0);
+        ApiResponseV1 UpdateSeriesImage(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0);
 
         /// <summary>
         /// update the image of an series
@@ -759,7 +759,7 @@ namespace MangaUpdates.Api
         /// <param name="image">Image to update (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        ApiResponse<ApiResponseV1> UpdateSeriesImageWithHttpInfo(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0);
+        ApiResponse<ApiResponseV1> UpdateSeriesImageWithHttpInfo(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0);
         /// <summary>
         /// update the user rating for a series
         /// </summary>
@@ -1680,7 +1680,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        System.Threading.Tasks.Task<ApiResponseV1> UpdateSeriesImageAsync(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponseV1> UpdateSeriesImageAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update the image of an series
@@ -1694,7 +1694,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> UpdateSeriesImageWithHttpInfoAsync(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> UpdateSeriesImageWithHttpInfoAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update the user rating for a series
         /// </summary>
@@ -7036,7 +7036,7 @@ namespace MangaUpdates.Api
         /// <param name="image">Image to update (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        public ApiResponseV1 UpdateSeriesImage(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0)
+        public ApiResponseV1 UpdateSeriesImage(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0)
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = UpdateSeriesImageWithHttpInfo(id, image);
             return localVarResponse.Data;
@@ -7050,7 +7050,7 @@ namespace MangaUpdates.Api
         /// <param name="image">Image to update (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        public MangaUpdates.Client.ApiResponse<ApiResponseV1> UpdateSeriesImageWithHttpInfo(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0)
+        public MangaUpdates.Client.ApiResponse<ApiResponseV1> UpdateSeriesImageWithHttpInfo(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0)
         {
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();
 
@@ -7114,7 +7114,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        public async System.Threading.Tasks.Task<ApiResponseV1> UpdateSeriesImageAsync(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponseV1> UpdateSeriesImageAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = await UpdateSeriesImageWithHttpInfoAsync(id, image, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -7129,7 +7129,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> UpdateSeriesImageWithHttpInfoAsync(long id, System.IO.Stream image = default(System.IO.Stream), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> UpdateSeriesImageWithHttpInfoAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();

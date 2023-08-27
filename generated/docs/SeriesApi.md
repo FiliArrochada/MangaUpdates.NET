@@ -3200,7 +3200,7 @@ catch (ApiException e)
 
 <a id="updateseriesimage"></a>
 # **UpdateSeriesImage**
-> ApiResponseV1 UpdateSeriesImage (long id, System.IO.Stream image = null)
+> ApiResponseV1 UpdateSeriesImage (long id, System.IO.Stream? image = null)
 
 update the image of an series
 
@@ -3225,7 +3225,7 @@ namespace Example
 
             var apiInstance = new SeriesApi(config);
             var id = 789L;  // long | id of series
-            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Image to update (optional) 
+            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | Image to update (optional) 
 
             try
             {
@@ -3269,7 +3269,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **long** | id of series |  |
-| **image** | **System.IO.Stream****System.IO.Stream** | Image to update | [optional]  |
+| **image** | **System.IO.Stream?****System.IO.Stream?** | Image to update | [optional]  |
 
 ### Return type
 

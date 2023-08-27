@@ -104,7 +104,7 @@ namespace MangaUpdates.Api
         /// <param name="caption">Image caption (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        ApiResponseV1 AddTemporaryPollImage(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0);
+        ApiResponseV1 AddTemporaryPollImage(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// add a temporary poll image
@@ -117,7 +117,7 @@ namespace MangaUpdates.Api
         /// <param name="caption">Image caption (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        ApiResponse<ApiResponseV1> AddTemporaryPollImageWithHttpInfo(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0);
+        ApiResponse<ApiResponseV1> AddTemporaryPollImageWithHttpInfo(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0);
         /// <summary>
         /// add a forum topic
         /// </summary>
@@ -924,7 +924,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        System.Threading.Tasks.Task<ApiResponseV1> AddTemporaryPollImageAsync(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponseV1> AddTemporaryPollImageAsync(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// add a temporary poll image
@@ -938,7 +938,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> AddTemporaryPollImageWithHttpInfoAsync(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> AddTemporaryPollImageWithHttpInfoAsync(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// add a forum topic
         /// </summary>
@@ -2403,7 +2403,7 @@ namespace MangaUpdates.Api
         /// <param name="caption">Image caption (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        public ApiResponseV1 AddTemporaryPollImage(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0)
+        public ApiResponseV1 AddTemporaryPollImage(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = AddTemporaryPollImageWithHttpInfo(image, caption);
             return localVarResponse.Data;
@@ -2417,7 +2417,7 @@ namespace MangaUpdates.Api
         /// <param name="caption">Image caption (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        public MangaUpdates.Client.ApiResponse<ApiResponseV1> AddTemporaryPollImageWithHttpInfo(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0)
+        public MangaUpdates.Client.ApiResponse<ApiResponseV1> AddTemporaryPollImageWithHttpInfo(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();
 
@@ -2484,7 +2484,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        public async System.Threading.Tasks.Task<ApiResponseV1> AddTemporaryPollImageAsync(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponseV1> AddTemporaryPollImageAsync(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = await AddTemporaryPollImageWithHttpInfoAsync(image, caption, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2499,7 +2499,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> AddTemporaryPollImageWithHttpInfoAsync(System.IO.Stream image = default(System.IO.Stream), string caption = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> AddTemporaryPollImageWithHttpInfoAsync(System.IO.Stream? image = default(System.IO.Stream?), string? caption = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();

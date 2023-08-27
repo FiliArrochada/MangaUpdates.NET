@@ -55,7 +55,7 @@ namespace MangaUpdates.Api
         /// <param name="title">Title of the new avatar (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        ApiResponseV1 AddMemberAvatar(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0);
+        ApiResponseV1 AddMemberAvatar(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// add a new member avatar
@@ -69,7 +69,7 @@ namespace MangaUpdates.Api
         /// <param name="title">Title of the new avatar (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        ApiResponse<ApiResponseV1> AddMemberAvatarWithHttpInfo(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0);
+        ApiResponse<ApiResponseV1> AddMemberAvatarWithHttpInfo(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0);
         /// <summary>
         /// add a change request
         /// </summary>
@@ -653,7 +653,7 @@ namespace MangaUpdates.Api
         /// <param name="asc">Direction of results (optional, default to asc)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserChangeRequestSearchResponseV1</returns>
-        UserChangeRequestSearchResponseV1 SearchMemberChangeRequests(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0);
+        UserChangeRequestSearchResponseV1 SearchMemberChangeRequests(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// search change requests for a specific user
@@ -669,7 +669,7 @@ namespace MangaUpdates.Api
         /// <param name="asc">Direction of results (optional, default to asc)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserChangeRequestSearchResponseV1</returns>
-        ApiResponse<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsWithHttpInfo(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0);
+        ApiResponse<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsWithHttpInfo(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0);
         /// <summary>
         /// search members
         /// </summary>
@@ -783,7 +783,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        System.Threading.Tasks.Task<ApiResponseV1> AddMemberAvatarAsync(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponseV1> AddMemberAvatarAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// add a new member avatar
@@ -798,7 +798,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> AddMemberAvatarWithHttpInfoAsync(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ApiResponseV1>> AddMemberAvatarWithHttpInfoAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// add a change request
         /// </summary>
@@ -1521,7 +1521,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserChangeRequestSearchResponseV1</returns>
-        System.Threading.Tasks.Task<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsAsync(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsAsync(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// search change requests for a specific user
@@ -1538,7 +1538,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserChangeRequestSearchResponseV1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserChangeRequestSearchResponseV1>> SearchMemberChangeRequestsWithHttpInfoAsync(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UserChangeRequestSearchResponseV1>> SearchMemberChangeRequestsWithHttpInfoAsync(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// search members
         /// </summary>
@@ -1907,7 +1907,7 @@ namespace MangaUpdates.Api
         /// <param name="title">Title of the new avatar (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponseV1</returns>
-        public ApiResponseV1 AddMemberAvatar(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0)
+        public ApiResponseV1 AddMemberAvatar(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = AddMemberAvatarWithHttpInfo(id, image, title);
             return localVarResponse.Data;
@@ -1922,7 +1922,7 @@ namespace MangaUpdates.Api
         /// <param name="title">Title of the new avatar (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApiResponseV1</returns>
-        public MangaUpdates.Client.ApiResponse<ApiResponseV1> AddMemberAvatarWithHttpInfo(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0)
+        public MangaUpdates.Client.ApiResponse<ApiResponseV1> AddMemberAvatarWithHttpInfo(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();
 
@@ -1991,7 +1991,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponseV1</returns>
-        public async System.Threading.Tasks.Task<ApiResponseV1> AddMemberAvatarAsync(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponseV1> AddMemberAvatarAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             MangaUpdates.Client.ApiResponse<ApiResponseV1> localVarResponse = await AddMemberAvatarWithHttpInfoAsync(id, image, title, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2007,7 +2007,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ApiResponseV1)</returns>
-        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> AddMemberAvatarWithHttpInfoAsync(long id, System.IO.Stream image = default(System.IO.Stream), string title = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<ApiResponseV1>> AddMemberAvatarWithHttpInfoAsync(long id, System.IO.Stream? image = default(System.IO.Stream?), string? title = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();
@@ -6153,7 +6153,7 @@ namespace MangaUpdates.Api
         /// <param name="asc">Direction of results (optional, default to asc)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserChangeRequestSearchResponseV1</returns>
-        public UserChangeRequestSearchResponseV1 SearchMemberChangeRequests(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0)
+        public UserChangeRequestSearchResponseV1 SearchMemberChangeRequests(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1> localVarResponse = SearchMemberChangeRequestsWithHttpInfo(id, page, perpage, orderby, asc);
             return localVarResponse.Data;
@@ -6170,7 +6170,7 @@ namespace MangaUpdates.Api
         /// <param name="asc">Direction of results (optional, default to asc)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserChangeRequestSearchResponseV1</returns>
-        public MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsWithHttpInfo(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0)
+        public MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsWithHttpInfo(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0)
         {
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();
 
@@ -6248,7 +6248,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UserChangeRequestSearchResponseV1</returns>
-        public async System.Threading.Tasks.Task<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsAsync(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UserChangeRequestSearchResponseV1> SearchMemberChangeRequestsAsync(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1> localVarResponse = await SearchMemberChangeRequestsWithHttpInfoAsync(id, page, perpage, orderby, asc, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -6266,7 +6266,7 @@ namespace MangaUpdates.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UserChangeRequestSearchResponseV1)</returns>
-        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1>> SearchMemberChangeRequestsWithHttpInfoAsync(long id, long? page = default(long?), long? perpage = default(long?), string orderby = default(string), string asc = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MangaUpdates.Client.ApiResponse<UserChangeRequestSearchResponseV1>> SearchMemberChangeRequestsWithHttpInfoAsync(long id, long? page = default(long?), long? perpage = default(long?), string? orderby = default(string?), string? asc = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             MangaUpdates.Client.RequestOptions localVarRequestOptions = new MangaUpdates.Client.RequestOptions();

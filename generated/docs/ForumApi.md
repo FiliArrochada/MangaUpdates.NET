@@ -337,7 +337,7 @@ catch (ApiException e)
 
 <a id="addtemporarypollimage"></a>
 # **AddTemporaryPollImage**
-> ApiResponseV1 AddTemporaryPollImage (System.IO.Stream image = null, string caption = null)
+> ApiResponseV1 AddTemporaryPollImage (System.IO.Stream? image = null, string? caption = null)
 
 add a temporary poll image
 
@@ -361,8 +361,8 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ForumApi(config);
-            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | Image to update (optional) 
-            var caption = "caption_example";  // string | Image caption (optional) 
+            var image = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | Image to update (optional) 
+            var caption = "caption_example";  // string? | Image caption (optional) 
 
             try
             {
@@ -405,8 +405,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **image** | **System.IO.Stream****System.IO.Stream** | Image to update | [optional]  |
-| **caption** | **string** | Image caption | [optional]  |
+| **image** | **System.IO.Stream?****System.IO.Stream?** | Image to update | [optional]  |
+| **caption** | **string?** | Image caption | [optional]  |
 
 ### Return type
 

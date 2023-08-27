@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
-    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>MangaUpdates</AssemblyName>
     <PackageId>MangaUpdates</PackageId>
     <OutputType>Library</OutputType>
@@ -17,6 +17,7 @@
     <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,5 +30,8 @@
 
   <ItemGroup>
     <None Remove="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>
