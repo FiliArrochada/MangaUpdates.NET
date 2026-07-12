@@ -48,6 +48,7 @@ namespace MangaUpdates.Test.Api
         /// Test an instance of AboutusApi
         /// </summary>
         [Fact]
+
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' AboutusApi
