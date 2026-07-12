@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Type
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -139,7 +136,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelSearchV1" /> class.
@@ -179,79 +177,92 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SeriesId
         /// </summary>
-        [DataMember(Name = "series_id", EmitDefaultValue = false)]
+        [JsonPropertyName("series_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = false)]
+        [JsonPropertyName("title")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", EmitDefaultValue = false)]
+        [JsonPropertyName("image")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ImageModelV1 Image { get; set; }
 
         /// <summary>
         /// Gets or Sets Year
         /// </summary>
-        [DataMember(Name = "year", EmitDefaultValue = false)]
+        [JsonPropertyName("year")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Year { get; set; }
 
         /// <summary>
         /// Gets or Sets BayesianRating
         /// </summary>
-        [DataMember(Name = "bayesian_rating", EmitDefaultValue = false)]
+        [JsonPropertyName("bayesian_rating")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal BayesianRating { get; set; }
 
         /// <summary>
         /// Gets or Sets RatingVotes
         /// </summary>
-        [DataMember(Name = "rating_votes", EmitDefaultValue = false)]
+        [JsonPropertyName("rating_votes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long RatingVotes { get; set; }
 
         /// <summary>
         /// Gets or Sets Genres
         /// </summary>
-        [DataMember(Name = "genres", EmitDefaultValue = false)]
+        [JsonPropertyName("genres")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelSearchV1Genres> Genres { get; set; }
 
         /// <summary>
         /// Gets or Sets LatestChapter
         /// </summary>
-        [DataMember(Name = "latest_chapter", EmitDefaultValue = false)]
+        [JsonPropertyName("latest_chapter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long LatestChapter { get; set; }
 
         /// <summary>
         /// Gets or Sets Rank
         /// </summary>
-        [DataMember(Name = "rank", EmitDefaultValue = false)]
+        [JsonPropertyName("rank")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelSearchV1Rank Rank { get; set; }
 
         /// <summary>
         /// Gets or Sets LastUpdated
         /// </summary>
-        [DataMember(Name = "last_updated", EmitDefaultValue = false)]
+        [JsonPropertyName("last_updated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastUpdated { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelSearchV1Admin Admin { get; set; }
 
         /// <summary>
@@ -286,7 +297,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

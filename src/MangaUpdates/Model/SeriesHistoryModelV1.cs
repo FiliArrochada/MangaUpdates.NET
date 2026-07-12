@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -51,31 +48,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets ChangeId
         /// </summary>
-        [DataMember(Name = "change_id", EmitDefaultValue = false)]
+        [JsonPropertyName("change_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ChangeId { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
         /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [JsonPropertyName("username")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets Action
         /// </summary>
-        [DataMember(Name = "action", EmitDefaultValue = false)]
+        [JsonPropertyName("action")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Action { get; set; }
 
         /// <summary>
         /// Gets or Sets Changed
         /// </summary>
-        [DataMember(Name = "changed", EmitDefaultValue = false)]
+        [JsonPropertyName("changed")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Changed { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeAdded
         /// </summary>
-        [DataMember(Name = "time_added", EmitDefaultValue = false)]
+        [JsonPropertyName("time_added")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 TimeAdded { get; set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

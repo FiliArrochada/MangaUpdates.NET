@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -51,31 +48,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Reading
         /// </summary>
-        [DataMember(Name = "reading", EmitDefaultValue = false)]
+        [JsonPropertyName("reading")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Reading { get; set; }
 
         /// <summary>
         /// Gets or Sets Wish
         /// </summary>
-        [DataMember(Name = "wish", EmitDefaultValue = false)]
+        [JsonPropertyName("wish")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Wish { get; set; }
 
         /// <summary>
         /// Gets or Sets Complete
         /// </summary>
-        [DataMember(Name = "complete", EmitDefaultValue = false)]
+        [JsonPropertyName("complete")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Complete { get; set; }
 
         /// <summary>
         /// Gets or Sets Unfinished
         /// </summary>
-        [DataMember(Name = "unfinished", EmitDefaultValue = false)]
+        [JsonPropertyName("unfinished")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Unfinished { get; set; }
 
         /// <summary>
         /// Gets or Sets Custom
         /// </summary>
-        [DataMember(Name = "custom", EmitDefaultValue = false)]
+        [JsonPropertyName("custom")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Custom { get; set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

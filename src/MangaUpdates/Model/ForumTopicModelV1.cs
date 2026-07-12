@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -63,67 +60,77 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets TopicId
         /// </summary>
-        [DataMember(Name = "topic_id", EmitDefaultValue = false)]
+        [JsonPropertyName("topic_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long TopicId { get; set; }
 
         /// <summary>
         /// Gets or Sets Topic
         /// </summary>
-        [DataMember(Name = "topic", EmitDefaultValue = false)]
+        [JsonPropertyName("topic")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Topic { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets LastPost
         /// </summary>
-        [DataMember(Name = "last_post", EmitDefaultValue = false)]
+        [JsonPropertyName("last_post")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumPostModelSearchV1 LastPost { get; set; }
 
         /// <summary>
         /// Gets or Sets Stats
         /// </summary>
-        [DataMember(Name = "stats", EmitDefaultValue = false)]
+        [JsonPropertyName("stats")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumTopicModelV1Stats Stats { get; set; }
 
         /// <summary>
         /// Gets or Sets Forum
         /// </summary>
-        [DataMember(Name = "forum", EmitDefaultValue = false)]
+        [JsonPropertyName("forum")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumTopicModelV1Forum Forum { get; set; }
 
         /// <summary>
         /// Gets or Sets IsPoll
         /// </summary>
-        [DataMember(Name = "is_poll", EmitDefaultValue = true)]
+        [JsonPropertyName("is_poll")]
         public bool IsPoll { get; set; }
 
         /// <summary>
         /// Gets or Sets Poll
         /// </summary>
-        [DataMember(Name = "poll", EmitDefaultValue = false)]
+        [JsonPropertyName("poll")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumPollModelV1 Poll { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumTopicModelV1Admin Admin { get; set; }
 
         /// <summary>
         /// Gets or Sets TopicStarter
         /// </summary>
-        [DataMember(Name = "topic_starter", EmitDefaultValue = false)]
+        [JsonPropertyName("topic_starter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelSearchV1 TopicStarter { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeAdded
         /// </summary>
-        [DataMember(Name = "time_added", EmitDefaultValue = false)]
+        [JsonPropertyName("time_added")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 TimeAdded { get; set; }
 
         /// <summary>
@@ -155,7 +162,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

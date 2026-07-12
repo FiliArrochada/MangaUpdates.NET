@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -49,25 +46,29 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Volume
         /// </summary>
-        [DataMember(Name = "volume", EmitDefaultValue = false)]
+        [JsonPropertyName("volume")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Volume { get; set; }
 
         /// <summary>
         /// Gets or Sets Chapter
         /// </summary>
-        [DataMember(Name = "chapter", EmitDefaultValue = false)]
+        [JsonPropertyName("chapter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Chapter { get; set; }
 
         /// <summary>
         /// Gets or Sets IncrementVolume
         /// </summary>
-        [DataMember(Name = "increment_volume", EmitDefaultValue = false)]
+        [JsonPropertyName("increment_volume")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long IncrementVolume { get; set; }
 
         /// <summary>
         /// Gets or Sets IncrementChapter
         /// </summary>
-        [DataMember(Name = "increment_chapter", EmitDefaultValue = false)]
+        [JsonPropertyName("increment_chapter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long IncrementChapter { get; set; }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

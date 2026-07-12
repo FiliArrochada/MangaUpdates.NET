@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,42 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonPropertyName("name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Associated
         /// </summary>
-        [DataMember(Name = "associated", EmitDefaultValue = false)]
+        [JsonPropertyName("associated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<GroupsModelUpdateV1Associated> Associated { get; set; }
 
         /// <summary>
         /// Gets or Sets Social
         /// </summary>
-        [DataMember(Name = "social", EmitDefaultValue = false)]
+        [JsonPropertyName("social")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GroupsModelUpdateV1Social Social { get; set; }
 
         /// <summary>
         /// Gets or Sets Active
         /// </summary>
-        [DataMember(Name = "active", EmitDefaultValue = true)]
+        [JsonPropertyName("active")]
         public bool Active { get; set; }
 
         /// <summary>
         /// Gets or Sets Notes
         /// </summary>
-        [DataMember(Name = "notes", EmitDefaultValue = false)]
+        [JsonPropertyName("notes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Notes { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GroupsModelUpdateV1Admin Admin { get; set; }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

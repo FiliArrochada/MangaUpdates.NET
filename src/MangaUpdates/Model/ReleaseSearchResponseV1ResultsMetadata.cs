@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,43 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Series
         /// </summary>
-        [DataMember(Name = "series", EmitDefaultValue = false)]
+        [JsonPropertyName("series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelSearchV1 Series { get; set; }
 
         /// <summary>
         /// Gets or Sets UserList
         /// </summary>
-        [DataMember(Name = "user_list", EmitDefaultValue = false)]
+        [JsonPropertyName("user_list")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ListsSeriesModelV1 UserList { get; set; }
 
         /// <summary>
         /// Gets or Sets UserGenreHighlights
         /// </summary>
-        [DataMember(Name = "user_genre_highlights", EmitDefaultValue = false)]
+        [JsonPropertyName("user_genre_highlights")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<ReleaseSearchResponseV1ResultsMetadataUserGenreHighlights> UserGenreHighlights { get; set; }
 
         /// <summary>
         /// Gets or Sets UserGenreFilters
         /// </summary>
-        [DataMember(Name = "user_genre_filters", EmitDefaultValue = false)]
+        [JsonPropertyName("user_genre_filters")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> UserGenreFilters { get; set; }
 
         /// <summary>
         /// Gets or Sets UserGroupFilters
         /// </summary>
-        [DataMember(Name = "user_group_filters", EmitDefaultValue = false)]
+        [JsonPropertyName("user_group_filters")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> UserGroupFilters { get; set; }
 
         /// <summary>
         /// Gets or Sets TypeFilter
         /// </summary>
-        [DataMember(Name = "type_filter", EmitDefaultValue = false)]
+        [JsonPropertyName("type_filter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string TypeFilter { get; set; }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

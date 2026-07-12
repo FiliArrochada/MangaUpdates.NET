@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -57,49 +54,56 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets MessageId
         /// </summary>
-        [DataMember(Name = "message_id", EmitDefaultValue = false)]
+        [JsonPropertyName("message_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long MessageId { get; set; }
 
         /// <summary>
         /// Gets or Sets ConvoId
         /// </summary>
-        [DataMember(Name = "convo_id", EmitDefaultValue = false)]
+        [JsonPropertyName("convo_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ConvoId { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthorId
         /// </summary>
-        [DataMember(Name = "author_id", EmitDefaultValue = false)]
+        [JsonPropertyName("author_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AuthorId { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthorName
         /// </summary>
-        [DataMember(Name = "author_name", EmitDefaultValue = false)]
+        [JsonPropertyName("author_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string AuthorName { get; set; }
 
         /// <summary>
         /// Gets or Sets IsAdmin
         /// </summary>
-        [DataMember(Name = "is_admin", EmitDefaultValue = true)]
+        [JsonPropertyName("is_admin")]
         public bool IsAdmin { get; set; }
 
         /// <summary>
         /// Gets or Sets Content
         /// </summary>
-        [DataMember(Name = "content", EmitDefaultValue = false)]
+        [JsonPropertyName("content")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Content { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeAdded
         /// </summary>
-        [DataMember(Name = "time_added", EmitDefaultValue = false)]
+        [JsonPropertyName("time_added")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 TimeAdded { get; set; }
 
         /// <summary>
         /// Gets or Sets LastEdit
         /// </summary>
-        [DataMember(Name = "last_edit", EmitDefaultValue = false)]
+        [JsonPropertyName("last_edit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastEdit { get; set; }
 
         /// <summary>
@@ -128,7 +132,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

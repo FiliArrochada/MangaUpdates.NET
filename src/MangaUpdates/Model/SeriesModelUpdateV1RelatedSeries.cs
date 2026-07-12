@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines RelationType
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum RelationTypeEnum
         {
             /// <summary>
@@ -85,7 +82,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets RelationType
         /// </summary>
-        [DataMember(Name = "relation_type", IsRequired = true, EmitDefaultValue = true)]
+        [JsonPropertyName("relation_type")]
         public RelationTypeEnum RelationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelUpdateV1RelatedSeries" /> class.
@@ -106,7 +103,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets RelatedSeriesId
         /// </summary>
-        [DataMember(Name = "related_series_id", IsRequired = true, EmitDefaultValue = true)]
+        [JsonPropertyName("related_series_id")]
         public long RelatedSeriesId { get; set; }
 
         /// <summary>
@@ -129,7 +126,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

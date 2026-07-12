@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -51,31 +48,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "user_id", EmitDefaultValue = false)]
+        [JsonPropertyName("user_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long UserId { get; set; }
 
         /// <summary>
         /// Gets or Sets UserName
         /// </summary>
-        [DataMember(Name = "user_name", EmitDefaultValue = false)]
+        [JsonPropertyName("user_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string UserName { get; set; }
 
         /// <summary>
         /// Gets or Sets UserRating
         /// </summary>
-        [DataMember(Name = "user_rating", EmitDefaultValue = false)]
+        [JsonPropertyName("user_rating")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal UserRating { get; set; }
 
         /// <summary>
         /// Gets or Sets IntersectCount
         /// </summary>
-        [DataMember(Name = "intersect_count", EmitDefaultValue = false)]
+        [JsonPropertyName("intersect_count")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long IntersectCount { get; set; }
 
         /// <summary>
         /// Gets or Sets PercentMatch
         /// </summary>
-        [DataMember(Name = "percent_match", EmitDefaultValue = false)]
+        [JsonPropertyName("percent_match")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long PercentMatch { get; set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

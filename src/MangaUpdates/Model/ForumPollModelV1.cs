@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -49,25 +46,29 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Question
         /// </summary>
-        [DataMember(Name = "question", EmitDefaultValue = false)]
+        [JsonPropertyName("question")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Question { get; set; }
 
         /// <summary>
         /// Gets or Sets Answers
         /// </summary>
-        [DataMember(Name = "answers", EmitDefaultValue = false)]
+        [JsonPropertyName("answers")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<ForumPollAnswerModelV1> Answers { get; set; }
 
         /// <summary>
         /// Gets or Sets Votes
         /// </summary>
-        [DataMember(Name = "votes", EmitDefaultValue = false)]
+        [JsonPropertyName("votes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Votes { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumPollModelV1Admin Admin { get; set; }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

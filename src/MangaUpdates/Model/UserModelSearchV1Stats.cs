@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,43 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets ForumPosts
         /// </summary>
-        [DataMember(Name = "forum_posts", EmitDefaultValue = false)]
+        [JsonPropertyName("forum_posts")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ForumPosts { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedAuthors
         /// </summary>
-        [DataMember(Name = "added_authors", EmitDefaultValue = false)]
+        [JsonPropertyName("added_authors")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedAuthors { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedGroups
         /// </summary>
-        [DataMember(Name = "added_groups", EmitDefaultValue = false)]
+        [JsonPropertyName("added_groups")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedGroups { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedPublishers
         /// </summary>
-        [DataMember(Name = "added_publishers", EmitDefaultValue = false)]
+        [JsonPropertyName("added_publishers")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedPublishers { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedReleases
         /// </summary>
-        [DataMember(Name = "added_releases", EmitDefaultValue = false)]
+        [JsonPropertyName("added_releases")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedReleases { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedSeries
         /// </summary>
-        [DataMember(Name = "added_series", EmitDefaultValue = false)]
+        [JsonPropertyName("added_series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedSeries { get; set; }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

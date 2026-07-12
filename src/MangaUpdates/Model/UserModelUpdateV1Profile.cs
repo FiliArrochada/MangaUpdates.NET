@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines FilterTypes
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum FilterTypesEnum
         {
             /// <summary>
@@ -159,43 +156,46 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets PerPage
         /// </summary>
-        [DataMember(Name = "per_page", EmitDefaultValue = false)]
+        [JsonPropertyName("per_page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long PerPage { get; set; }
 
         /// <summary>
         /// Gets or Sets Invisible
         /// </summary>
-        [DataMember(Name = "invisible", EmitDefaultValue = true)]
+        [JsonPropertyName("invisible")]
         public bool Invisible { get; set; }
 
         /// <summary>
         /// Gets or Sets HideBirthday
         /// </summary>
-        [DataMember(Name = "hide_birthday", EmitDefaultValue = true)]
+        [JsonPropertyName("hide_birthday")]
         public bool HideBirthday { get; set; }
 
         /// <summary>
         /// Gets or Sets HideCategories
         /// </summary>
-        [DataMember(Name = "hide_categories", EmitDefaultValue = true)]
+        [JsonPropertyName("hide_categories")]
         public bool HideCategories { get; set; }
 
         /// <summary>
         /// Gets or Sets FilterTypes
         /// </summary>
-        [DataMember(Name = "filter_types", EmitDefaultValue = false)]
+        [JsonPropertyName("filter_types")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<UserModelUpdateV1Profile.FilterTypesEnum> FilterTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets Upgrade
         /// </summary>
-        [DataMember(Name = "upgrade", EmitDefaultValue = false)]
+        [JsonPropertyName("upgrade")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelUpdateV1ProfileUpgrade Upgrade { get; set; }
 
         /// <summary>
         /// Gets or Sets Age18Verified
         /// </summary>
-        [DataMember(Name = "age18_verified", EmitDefaultValue = true)]
+        [JsonPropertyName("age18_verified")]
         public bool Age18Verified { get; set; }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

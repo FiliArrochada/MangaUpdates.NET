@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Bloodtype
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum BloodtypeEnum
         {
             /// <summary>
@@ -73,12 +70,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Bloodtype
         /// </summary>
-        [DataMember(Name = "bloodtype", EmitDefaultValue = false)]
+        [JsonPropertyName("bloodtype")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public BloodtypeEnum? Bloodtype { get; set; }
         /// <summary>
         /// Defines Gender
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum GenderEnum
         {
             /// <summary>
@@ -111,7 +109,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Gender
         /// </summary>
-        [DataMember(Name = "gender", EmitDefaultValue = false)]
+        [JsonPropertyName("gender")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GenderEnum? Gender { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorsModelV1" /> class.
@@ -157,91 +156,106 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [JsonPropertyName("id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonPropertyName("name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Associated
         /// </summary>
-        [DataMember(Name = "associated", EmitDefaultValue = false)]
+        [JsonPropertyName("associated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<AuthorsModelV1Associated> Associated { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", EmitDefaultValue = false)]
+        [JsonPropertyName("image")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ImageModelV1 Image { get; set; }
 
         /// <summary>
         /// Gets or Sets Actualname
         /// </summary>
-        [DataMember(Name = "actualname", EmitDefaultValue = false)]
+        [JsonPropertyName("actualname")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Actualname { get; set; }
 
         /// <summary>
         /// Gets or Sets Birthday
         /// </summary>
-        [DataMember(Name = "birthday", EmitDefaultValue = false)]
+        [JsonPropertyName("birthday")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public BirthdayModelV1 Birthday { get; set; }
 
         /// <summary>
         /// Gets or Sets Birthplace
         /// </summary>
-        [DataMember(Name = "birthplace", EmitDefaultValue = false)]
+        [JsonPropertyName("birthplace")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Birthplace { get; set; }
 
         /// <summary>
         /// Gets or Sets Genres
         /// </summary>
-        [DataMember(Name = "genres", EmitDefaultValue = false)]
+        [JsonPropertyName("genres")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> Genres { get; set; }
 
         /// <summary>
         /// Gets or Sets Stats
         /// </summary>
-        [DataMember(Name = "stats", EmitDefaultValue = false)]
+        [JsonPropertyName("stats")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AuthorsModelV1Stats Stats { get; set; }
 
         /// <summary>
         /// Gets or Sets Social
         /// </summary>
-        [DataMember(Name = "social", EmitDefaultValue = false)]
+        [JsonPropertyName("social")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AuthorsModelV1Social Social { get; set; }
 
         /// <summary>
         /// Gets or Sets Comments
         /// </summary>
-        [DataMember(Name = "comments", EmitDefaultValue = false)]
+        [JsonPropertyName("comments")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Comments { get; set; }
 
         /// <summary>
         /// Gets or Sets LastUpdated
         /// </summary>
-        [DataMember(Name = "last_updated", EmitDefaultValue = false)]
+        [JsonPropertyName("last_updated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastUpdated { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedBy
         /// </summary>
-        [DataMember(Name = "added_by", EmitDefaultValue = false)]
+        [JsonPropertyName("added_by")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelSearchV1 AddedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AuthorsModelV1Admin Admin { get; set; }
 
         /// <summary>
@@ -279,7 +293,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

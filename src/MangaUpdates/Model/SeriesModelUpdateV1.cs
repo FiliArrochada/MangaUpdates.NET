@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Type
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -139,7 +136,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelUpdateV1" /> class.
@@ -183,91 +181,104 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = false)]
+        [JsonPropertyName("title")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Associated
         /// </summary>
-        [DataMember(Name = "associated", EmitDefaultValue = false)]
+        [JsonPropertyName("associated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1Associated> Associated { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Year
         /// </summary>
-        [DataMember(Name = "year", EmitDefaultValue = false)]
+        [JsonPropertyName("year")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Year { get; set; }
 
         /// <summary>
         /// Gets or Sets Genres
         /// </summary>
-        [DataMember(Name = "genres", EmitDefaultValue = false)]
+        [JsonPropertyName("genres")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1Genres> Genres { get; set; }
 
         /// <summary>
         /// Gets or Sets Categories
         /// </summary>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
+        [JsonPropertyName("categories")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<CategoriesModelUpdateV1> Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
+        [JsonPropertyName("status")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Licensed
         /// </summary>
-        [DataMember(Name = "licensed", EmitDefaultValue = true)]
+        [JsonPropertyName("licensed")]
         public bool Licensed { get; set; }
 
         /// <summary>
         /// Gets or Sets Completed
         /// </summary>
-        [DataMember(Name = "completed", EmitDefaultValue = true)]
+        [JsonPropertyName("completed")]
         public bool Completed { get; set; }
 
         /// <summary>
         /// Gets or Sets Anime
         /// </summary>
-        [DataMember(Name = "anime", EmitDefaultValue = false)]
+        [JsonPropertyName("anime")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelUpdateV1Anime Anime { get; set; }
 
         /// <summary>
         /// Gets or Sets RelatedSeries
         /// </summary>
-        [DataMember(Name = "related_series", EmitDefaultValue = false)]
+        [JsonPropertyName("related_series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1RelatedSeries> RelatedSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets Authors
         /// </summary>
-        [DataMember(Name = "authors", EmitDefaultValue = false)]
+        [JsonPropertyName("authors")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1Authors> Authors { get; set; }
 
         /// <summary>
         /// Gets or Sets Publishers
         /// </summary>
-        [DataMember(Name = "publishers", EmitDefaultValue = false)]
+        [JsonPropertyName("publishers")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1Publishers> Publishers { get; set; }
 
         /// <summary>
         /// Gets or Sets Publications
         /// </summary>
-        [DataMember(Name = "publications", EmitDefaultValue = false)]
+        [JsonPropertyName("publications")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelUpdateV1Publications> Publications { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelUpdateV1Admin Admin { get; set; }
 
         /// <summary>
@@ -304,7 +315,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

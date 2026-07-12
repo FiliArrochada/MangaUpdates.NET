@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines State
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum StateEnum
         {
             /// <summary>
@@ -67,7 +64,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [JsonPropertyName("state")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public StateEnum? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="MiscSlowTransactionStatusResponseV1" /> class.
@@ -91,31 +89,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
-        [DataMember(Name = "error", EmitDefaultValue = false)]
+        [JsonPropertyName("error")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Error { get; set; }
 
         /// <summary>
         /// Gets or Sets Percent
         /// </summary>
-        [DataMember(Name = "percent", EmitDefaultValue = false)]
+        [JsonPropertyName("percent")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Percent { get; set; }
 
         /// <summary>
         /// Gets or Sets Done
         /// </summary>
-        [DataMember(Name = "done", EmitDefaultValue = false)]
+        [JsonPropertyName("done")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Done { get; set; }
 
         /// <summary>
         /// Gets or Sets Total
         /// </summary>
-        [DataMember(Name = "total", EmitDefaultValue = false)]
+        [JsonPropertyName("total")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Total { get; set; }
 
         /// <summary>
         /// Gets or Sets Return
         /// </summary>
-        [DataMember(Name = "return", EmitDefaultValue = false)]
+        [JsonPropertyName("return")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Return { get; set; }
 
         /// <summary>
@@ -142,7 +145,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

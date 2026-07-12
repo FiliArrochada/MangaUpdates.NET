@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -47,19 +44,22 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SeriesName
         /// </summary>
-        [DataMember(Name = "series_name", EmitDefaultValue = false)]
+        [JsonPropertyName("series_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string SeriesName { get; set; }
 
         /// <summary>
         /// Gets or Sets SeriesId
         /// </summary>
-        [DataMember(Name = "series_id", EmitDefaultValue = false)]
+        [JsonPropertyName("series_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
-        [DataMember(Name = "weight", EmitDefaultValue = false)]
+        [JsonPropertyName("weight")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Weight { get; set; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

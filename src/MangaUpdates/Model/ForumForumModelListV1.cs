@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -61,61 +58,71 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets ForumId
         /// </summary>
-        [DataMember(Name = "forum_id", EmitDefaultValue = false)]
+        [JsonPropertyName("forum_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ForumId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonPropertyName("name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Position
         /// </summary>
-        [DataMember(Name = "position", EmitDefaultValue = false)]
+        [JsonPropertyName("position")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Position { get; set; }
 
         /// <summary>
         /// Gets or Sets Moderators
         /// </summary>
-        [DataMember(Name = "moderators", EmitDefaultValue = false)]
+        [JsonPropertyName("moderators")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<ForumAdminModelV1> Moderators { get; set; }
 
         /// <summary>
         /// Gets or Sets Series
         /// </summary>
-        [DataMember(Name = "series", EmitDefaultValue = false)]
+        [JsonPropertyName("series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelSearchV1 Series { get; set; }
 
         /// <summary>
         /// Gets or Sets Stats
         /// </summary>
-        [DataMember(Name = "stats", EmitDefaultValue = false)]
+        [JsonPropertyName("stats")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumForumModelListV1Stats Stats { get; set; }
 
         /// <summary>
         /// Gets or Sets LastTopic
         /// </summary>
-        [DataMember(Name = "last_topic", EmitDefaultValue = false)]
+        [JsonPropertyName("last_topic")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumTopicModelSearchV1 LastTopic { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumForumModelListV1Admin Admin { get; set; }
 
         /// <summary>
@@ -146,7 +153,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

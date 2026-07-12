@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,43 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Releases
         /// </summary>
-        [DataMember(Name = "releases", EmitDefaultValue = false)]
+        [JsonPropertyName("releases")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1StatsModerationReleases Releases { get; set; }
 
         /// <summary>
         /// Gets or Sets Series
         /// </summary>
-        [DataMember(Name = "series", EmitDefaultValue = false)]
+        [JsonPropertyName("series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1StatsModerationSeries Series { get; set; }
 
         /// <summary>
         /// Gets or Sets Publishers
         /// </summary>
-        [DataMember(Name = "publishers", EmitDefaultValue = false)]
+        [JsonPropertyName("publishers")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1StatsModerationPublishers Publishers { get; set; }
 
         /// <summary>
         /// Gets or Sets Groups
         /// </summary>
-        [DataMember(Name = "groups", EmitDefaultValue = false)]
+        [JsonPropertyName("groups")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1StatsModerationGroups Groups { get; set; }
 
         /// <summary>
         /// Gets or Sets Authors
         /// </summary>
-        [DataMember(Name = "authors", EmitDefaultValue = false)]
+        [JsonPropertyName("authors")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1StatsModerationAuthors Authors { get; set; }
 
         /// <summary>
         /// Gets or Sets LastAction
         /// </summary>
-        [DataMember(Name = "last_action", EmitDefaultValue = false)]
+        [JsonPropertyName("last_action")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastAction { get; set; }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

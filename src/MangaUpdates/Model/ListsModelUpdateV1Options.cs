@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Sort
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum SortEnum
         {
             /// <summary>
@@ -85,12 +82,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Sort
         /// </summary>
-        [DataMember(Name = "sort", EmitDefaultValue = false)]
+        [JsonPropertyName("sort")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SortEnum? Sort { get; set; }
         /// <summary>
         /// Defines ShowComment
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum ShowCommentEnum
         {
             /// <summary>
@@ -117,7 +115,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets ShowComment
         /// </summary>
-        [DataMember(Name = "show_comment", EmitDefaultValue = false)]
+        [JsonPropertyName("show_comment")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ShowCommentEnum? ShowComment { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsModelUpdateV1Options" /> class.
@@ -143,31 +142,32 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Public
         /// </summary>
-        [DataMember(Name = "public", EmitDefaultValue = true)]
+        [JsonPropertyName("public")]
         public bool Public { get; set; }
 
         /// <summary>
         /// Gets or Sets ShowRating
         /// </summary>
-        [DataMember(Name = "show_rating", EmitDefaultValue = true)]
+        [JsonPropertyName("show_rating")]
         public bool ShowRating { get; set; }
 
         /// <summary>
         /// Gets or Sets ShowStatus
         /// </summary>
-        [DataMember(Name = "show_status", EmitDefaultValue = true)]
+        [JsonPropertyName("show_status")]
         public bool ShowStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets ShowPerPage
         /// </summary>
-        [DataMember(Name = "show_per_page", EmitDefaultValue = false)]
+        [JsonPropertyName("show_per_page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ShowPerPage { get; set; }
 
         /// <summary>
         /// Gets or Sets ShowLatestChapter
         /// </summary>
-        [DataMember(Name = "show_latest_chapter", EmitDefaultValue = true)]
+        [JsonPropertyName("show_latest_chapter")]
         public bool ShowLatestChapter { get; set; }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

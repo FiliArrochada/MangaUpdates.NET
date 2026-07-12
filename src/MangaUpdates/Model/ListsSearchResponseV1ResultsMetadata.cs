@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -45,13 +42,15 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Series
         /// </summary>
-        [DataMember(Name = "series", EmitDefaultValue = false)]
+        [JsonPropertyName("series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelSearchV1 Series { get; set; }
 
         /// <summary>
         /// Gets or Sets UserRating
         /// </summary>
-        [DataMember(Name = "user_rating", EmitDefaultValue = false)]
+        [JsonPropertyName("user_rating")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal UserRating { get; set; }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

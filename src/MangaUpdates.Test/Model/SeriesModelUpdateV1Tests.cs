@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using MangaUpdates.Model;
 using MangaUpdates.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace MangaUpdates.Test.Model
 {

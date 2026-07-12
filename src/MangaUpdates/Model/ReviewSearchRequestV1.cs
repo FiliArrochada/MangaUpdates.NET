@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -55,43 +52,49 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Search
         /// </summary>
-        [DataMember(Name = "search", EmitDefaultValue = false)]
+        [JsonPropertyName("search")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Search { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedBy
         /// </summary>
-        [DataMember(Name = "added_by", EmitDefaultValue = false)]
+        [JsonPropertyName("added_by")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets SeriesId
         /// </summary>
-        [DataMember(Name = "series_id", EmitDefaultValue = false)]
+        [JsonPropertyName("series_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonPropertyName("page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Page { get; set; }
 
         /// <summary>
         /// Gets or Sets Perpage
         /// </summary>
-        [DataMember(Name = "perpage", EmitDefaultValue = false)]
+        [JsonPropertyName("perpage")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Perpage { get; set; }
 
         /// <summary>
         /// Gets or Sets Letter
         /// </summary>
-        [DataMember(Name = "letter", EmitDefaultValue = false)]
+        [JsonPropertyName("letter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Letter { get; set; }
 
         /// <summary>
         /// Gets or Sets Pending
         /// </summary>
-        [DataMember(Name = "pending", EmitDefaultValue = true)]
+        [JsonPropertyName("pending")]
         public bool Pending { get; set; }
 
         /// <summary>
@@ -119,7 +122,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

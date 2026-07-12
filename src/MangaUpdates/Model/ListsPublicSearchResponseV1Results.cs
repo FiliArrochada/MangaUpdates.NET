@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -51,31 +48,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SeriesId
         /// </summary>
-        [DataMember(Name = "series_id", EmitDefaultValue = false)]
+        [JsonPropertyName("series_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or Sets SeriesTitle
         /// </summary>
-        [DataMember(Name = "series_title", EmitDefaultValue = false)]
+        [JsonPropertyName("series_title")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string SeriesTitle { get; set; }
 
         /// <summary>
         /// Gets or Sets Volume
         /// </summary>
-        [DataMember(Name = "volume", EmitDefaultValue = false)]
+        [JsonPropertyName("volume")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Volume { get; set; }
 
         /// <summary>
         /// Gets or Sets Chapter
         /// </summary>
-        [DataMember(Name = "chapter", EmitDefaultValue = false)]
+        [JsonPropertyName("chapter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Chapter { get; set; }
 
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
-        [DataMember(Name = "metadata", EmitDefaultValue = false)]
+        [JsonPropertyName("metadata")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ListsPublicSearchResponseV1ResultsMetadata Metadata { get; set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

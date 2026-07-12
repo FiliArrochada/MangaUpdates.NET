@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines SearchBy
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum SearchByEnum
         {
             /// <summary>
@@ -55,12 +52,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SearchBy
         /// </summary>
-        [DataMember(Name = "search_by", EmitDefaultValue = false)]
+        [JsonPropertyName("search_by")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SearchByEnum? SearchBy { get; set; }
         /// <summary>
         /// Defines Method
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum MethodEnum
         {
             /// <summary>
@@ -81,7 +79,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Method
         /// </summary>
-        [DataMember(Name = "method", EmitDefaultValue = false)]
+        [JsonPropertyName("method")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MethodEnum? Method { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumSearchRequestV1" /> class.
@@ -113,49 +112,57 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Search
         /// </summary>
-        [DataMember(Name = "search", EmitDefaultValue = false)]
+        [JsonPropertyName("search")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Search { get; set; }
 
         /// <summary>
         /// Gets or Sets Since
         /// </summary>
-        [DataMember(Name = "since", EmitDefaultValue = false)]
+        [JsonPropertyName("since")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Since { get; set; }
 
         /// <summary>
         /// Gets or Sets AfterId
         /// </summary>
-        [DataMember(Name = "after_id", EmitDefaultValue = false)]
+        [JsonPropertyName("after_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AfterId { get; set; }
 
         /// <summary>
         /// Gets or Sets BeforeId
         /// </summary>
-        [DataMember(Name = "before_id", EmitDefaultValue = false)]
+        [JsonPropertyName("before_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long BeforeId { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonPropertyName("page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Page { get; set; }
 
         /// <summary>
         /// Gets or Sets Perpage
         /// </summary>
-        [DataMember(Name = "perpage", EmitDefaultValue = false)]
+        [JsonPropertyName("perpage")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Perpage { get; set; }
 
         /// <summary>
         /// Gets or Sets ByUserId
         /// </summary>
-        [DataMember(Name = "by_user_id", EmitDefaultValue = false)]
+        [JsonPropertyName("by_user_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ByUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets FilterUserId
         /// </summary>
-        [DataMember(Name = "filter_user_id", EmitDefaultValue = false)]
+        [JsonPropertyName("filter_user_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long FilterUserId { get; set; }
 
         /// <summary>
@@ -186,7 +193,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

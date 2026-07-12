@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -47,19 +44,22 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Timestamp
         /// </summary>
-        [DataMember(Name = "timestamp", EmitDefaultValue = false)]
+        [JsonPropertyName("timestamp")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Timestamp { get; set; }
 
         /// <summary>
         /// Gets or Sets AsRfc3339
         /// </summary>
-        [DataMember(Name = "as_rfc3339", EmitDefaultValue = false)]
+        [JsonPropertyName("as_rfc3339")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime AsRfc3339 { get; set; }
 
         /// <summary>
         /// Gets or Sets AsString
         /// </summary>
-        [DataMember(Name = "as_string", EmitDefaultValue = false)]
+        [JsonPropertyName("as_string")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string AsString { get; set; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>
@@ -114,9 +114,8 @@ namespace MangaUpdates.Model
                 ) && 
                 (
                     this.AsRfc3339 == input.AsRfc3339 ||
-                    (this.AsRfc3339 != null &&
-                    this.AsRfc3339.Equals(input.AsRfc3339))
-                ) && 
+                    this.AsRfc3339.Equals(input.AsRfc3339)
+                ) &&
                 (
                     this.AsString == input.AsString ||
                     (this.AsString != null &&
@@ -134,10 +133,7 @@ namespace MangaUpdates.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
-                if (this.AsRfc3339 != null)
-                {
-                    hashCode = (hashCode * 59) + this.AsRfc3339.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.AsRfc3339.GetHashCode();
                 if (this.AsString != null)
                 {
                     hashCode = (hashCode * 59) + this.AsString.GetHashCode();

@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines SearchType
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum SearchTypeEnum
         {
             /// <summary>
@@ -55,12 +52,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SearchType
         /// </summary>
-        [DataMember(Name = "search_type", EmitDefaultValue = false)]
+        [JsonPropertyName("search_type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SearchTypeEnum? SearchType { get; set; }
         /// <summary>
         /// Defines Orderby
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum OrderbyEnum
         {
             /// <summary>
@@ -99,12 +97,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Orderby
         /// </summary>
-        [DataMember(Name = "orderby", EmitDefaultValue = false)]
+        [JsonPropertyName("orderby")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OrderbyEnum? Orderby { get; set; }
         /// <summary>
         /// Defines Asc
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum AscEnum
         {
             /// <summary>
@@ -125,7 +124,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Asc
         /// </summary>
-        [DataMember(Name = "asc", EmitDefaultValue = false)]
+        [JsonPropertyName("asc")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AscEnum? Asc { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ReleaseSearchRequestV1" /> class.
@@ -163,61 +163,69 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Search
         /// </summary>
-        [DataMember(Name = "search", EmitDefaultValue = false)]
+        [JsonPropertyName("search")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Search { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedBy
         /// </summary>
-        [DataMember(Name = "added_by", EmitDefaultValue = false)]
+        [JsonPropertyName("added_by")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonPropertyName("page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Page { get; set; }
 
         /// <summary>
         /// Gets or Sets Perpage
         /// </summary>
-        [DataMember(Name = "perpage", EmitDefaultValue = false)]
+        [JsonPropertyName("perpage")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Perpage { get; set; }
 
         /// <summary>
         /// Gets or Sets Letter
         /// </summary>
-        [DataMember(Name = "letter", EmitDefaultValue = false)]
+        [JsonPropertyName("letter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Letter { get; set; }
 
         /// <summary>
         /// Gets or Sets StartDate
         /// </summary>
-        [DataMember(Name = "start_date", EmitDefaultValue = false)]
+        [JsonPropertyName("start_date")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string StartDate { get; set; }
 
         /// <summary>
         /// Gets or Sets EndDate
         /// </summary>
-        [DataMember(Name = "end_date", EmitDefaultValue = false)]
+        [JsonPropertyName("end_date")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets GroupId
         /// </summary>
-        [DataMember(Name = "group_id", EmitDefaultValue = false)]
+        [JsonPropertyName("group_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long GroupId { get; set; }
 
         /// <summary>
         /// Gets or Sets Pending
         /// </summary>
-        [DataMember(Name = "pending", EmitDefaultValue = true)]
+        [JsonPropertyName("pending")]
         public bool Pending { get; set; }
 
         /// <summary>
         /// Gets or Sets IncludeMetadata
         /// </summary>
-        [DataMember(Name = "include_metadata", EmitDefaultValue = true)]
+        [JsonPropertyName("include_metadata")]
         public bool IncludeMetadata { get; set; }
 
         /// <summary>
@@ -251,7 +259,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

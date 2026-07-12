@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -59,25 +56,27 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets AnswerId
         /// </summary>
-        [DataMember(Name = "answer_id", IsRequired = true, EmitDefaultValue = true)]
+        [JsonPropertyName("answer_id")]
         public long AnswerId { get; set; }
 
         /// <summary>
         /// Gets or Sets Answer
         /// </summary>
-        [DataMember(Name = "answer", IsRequired = true, EmitDefaultValue = true)]
+        [JsonPropertyName("answer")]
         public string Answer { get; set; }
 
         /// <summary>
         /// Gets or Sets Votes
         /// </summary>
-        [DataMember(Name = "votes", EmitDefaultValue = false)]
+        [JsonPropertyName("votes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Votes { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", EmitDefaultValue = false)]
+        [JsonPropertyName("image")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ForumPollAnswerModelV1Image Image { get; set; }
 
         /// <summary>
@@ -102,7 +101,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

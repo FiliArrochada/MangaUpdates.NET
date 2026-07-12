@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,43 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name = "user", EmitDefaultValue = false)]
+        [JsonPropertyName("user")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal User { get; set; }
 
         /// <summary>
         /// Gets or Sets Plot
         /// </summary>
-        [DataMember(Name = "plot", EmitDefaultValue = false)]
+        [JsonPropertyName("plot")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Plot { get; set; }
 
         /// <summary>
         /// Gets or Sets Drawing
         /// </summary>
-        [DataMember(Name = "drawing", EmitDefaultValue = false)]
+        [JsonPropertyName("drawing")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Drawing { get; set; }
 
         /// <summary>
         /// Gets or Sets Characters
         /// </summary>
-        [DataMember(Name = "characters", EmitDefaultValue = false)]
+        [JsonPropertyName("characters")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Characters { get; set; }
 
         /// <summary>
         /// Gets or Sets Enjoy
         /// </summary>
-        [DataMember(Name = "enjoy", EmitDefaultValue = false)]
+        [JsonPropertyName("enjoy")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Enjoy { get; set; }
 
         /// <summary>
         /// Gets or Sets Overall
         /// </summary>
-        [DataMember(Name = "overall", EmitDefaultValue = false)]
+        [JsonPropertyName("overall")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal Overall { get; set; }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

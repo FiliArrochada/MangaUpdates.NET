@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Gender
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum GenderEnum
         {
             /// <summary>
@@ -73,7 +70,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Gender
         /// </summary>
-        [DataMember(Name = "gender", EmitDefaultValue = false)]
+        [JsonPropertyName("gender")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GenderEnum? Gender { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UserModelV1" /> class.
@@ -125,115 +123,133 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "user_id", EmitDefaultValue = false)]
+        [JsonPropertyName("user_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long UserId { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
         /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
+        [JsonPropertyName("username")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Email
         /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [JsonPropertyName("email")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or Sets Avatar
         /// </summary>
-        [DataMember(Name = "avatar", EmitDefaultValue = false)]
+        [JsonPropertyName("avatar")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AvatarModelV1 Avatar { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeJoined
         /// </summary>
-        [DataMember(Name = "time_joined", EmitDefaultValue = false)]
+        [JsonPropertyName("time_joined")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 TimeJoined { get; set; }
 
         /// <summary>
         /// Gets or Sets LastActiveTime
         /// </summary>
-        [DataMember(Name = "last_active_time", EmitDefaultValue = false)]
+        [JsonPropertyName("last_active_time")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastActiveTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Birthday
         /// </summary>
-        [DataMember(Name = "birthday", EmitDefaultValue = false)]
+        [JsonPropertyName("birthday")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public BirthdayModelV1 Birthday { get; set; }
 
         /// <summary>
         /// Gets or Sets Age
         /// </summary>
-        [DataMember(Name = "age", EmitDefaultValue = false)]
+        [JsonPropertyName("age")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Age { get; set; }
 
         /// <summary>
         /// Gets or Sets Timezone
         /// </summary>
-        [DataMember(Name = "timezone", EmitDefaultValue = false)]
+        [JsonPropertyName("timezone")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Timezone { get; set; }
 
         /// <summary>
         /// Gets or Sets Signature
         /// </summary>
-        [DataMember(Name = "signature", EmitDefaultValue = false)]
+        [JsonPropertyName("signature")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Signature { get; set; }
 
         /// <summary>
         /// Gets or Sets Location
         /// </summary>
-        [DataMember(Name = "location", EmitDefaultValue = false)]
+        [JsonPropertyName("location")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Location { get; set; }
 
         /// <summary>
         /// Gets or Sets ForumTitle
         /// </summary>
-        [DataMember(Name = "forum_title", EmitDefaultValue = false)]
+        [JsonPropertyName("forum_title")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string ForumTitle { get; set; }
 
         /// <summary>
         /// Gets or Sets FoldingAtHome
         /// </summary>
-        [DataMember(Name = "folding_at_home", EmitDefaultValue = true)]
+        [JsonPropertyName("folding_at_home")]
         public bool FoldingAtHome { get; set; }
 
         /// <summary>
         /// Gets or Sets Profile
         /// </summary>
-        [DataMember(Name = "profile", EmitDefaultValue = false)]
+        [JsonPropertyName("profile")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1Profile Profile { get; set; }
 
         /// <summary>
         /// Gets or Sets Stats
         /// </summary>
-        [DataMember(Name = "stats", EmitDefaultValue = false)]
+        [JsonPropertyName("stats")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1Stats Stats { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelV1Admin Admin { get; set; }
 
         /// <summary>
         /// Gets or Sets UserGroup
         /// </summary>
-        [DataMember(Name = "user_group", EmitDefaultValue = false)]
+        [JsonPropertyName("user_group")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string UserGroup { get; set; }
 
         /// <summary>
         /// Gets or Sets UserGroupName
         /// </summary>
-        [DataMember(Name = "user_group_name", EmitDefaultValue = false)]
+        [JsonPropertyName("user_group_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string UserGroupName { get; set; }
 
         /// <summary>
@@ -274,7 +290,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

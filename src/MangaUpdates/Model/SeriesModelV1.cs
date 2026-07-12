@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Type
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -139,7 +136,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelV1" /> class.
@@ -205,157 +203,181 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets SeriesId
         /// </summary>
-        [DataMember(Name = "series_id", EmitDefaultValue = false)]
+        [JsonPropertyName("series_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = false)]
+        [JsonPropertyName("title")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Associated
         /// </summary>
-        [DataMember(Name = "associated", EmitDefaultValue = false)]
+        [JsonPropertyName("associated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1Associated> Associated { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", EmitDefaultValue = false)]
+        [JsonPropertyName("image")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ImageModelV1 Image { get; set; }
 
         /// <summary>
         /// Gets or Sets Year
         /// </summary>
-        [DataMember(Name = "year", EmitDefaultValue = false)]
+        [JsonPropertyName("year")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Year { get; set; }
 
         /// <summary>
         /// Gets or Sets BayesianRating
         /// </summary>
-        [DataMember(Name = "bayesian_rating", EmitDefaultValue = false)]
+        [JsonPropertyName("bayesian_rating")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal BayesianRating { get; set; }
 
         /// <summary>
         /// Gets or Sets RatingVotes
         /// </summary>
-        [DataMember(Name = "rating_votes", EmitDefaultValue = false)]
+        [JsonPropertyName("rating_votes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long RatingVotes { get; set; }
 
         /// <summary>
         /// Gets or Sets Genres
         /// </summary>
-        [DataMember(Name = "genres", EmitDefaultValue = false)]
+        [JsonPropertyName("genres")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1Genres> Genres { get; set; }
 
         /// <summary>
         /// Gets or Sets Categories
         /// </summary>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
+        [JsonPropertyName("categories")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<CategoriesModelV1> Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets LatestChapter
         /// </summary>
-        [DataMember(Name = "latest_chapter", EmitDefaultValue = false)]
+        [JsonPropertyName("latest_chapter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long LatestChapter { get; set; }
 
         /// <summary>
         /// Gets or Sets ForumId
         /// </summary>
-        [DataMember(Name = "forum_id", EmitDefaultValue = false)]
+        [JsonPropertyName("forum_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long ForumId { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
+        [JsonPropertyName("status")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Licensed
         /// </summary>
-        [DataMember(Name = "licensed", EmitDefaultValue = true)]
+        [JsonPropertyName("licensed")]
         public bool Licensed { get; set; }
 
         /// <summary>
         /// Gets or Sets Completed
         /// </summary>
-        [DataMember(Name = "completed", EmitDefaultValue = true)]
+        [JsonPropertyName("completed")]
         public bool Completed { get; set; }
 
         /// <summary>
         /// Gets or Sets Anime
         /// </summary>
-        [DataMember(Name = "anime", EmitDefaultValue = false)]
+        [JsonPropertyName("anime")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelV1Anime Anime { get; set; }
 
         /// <summary>
         /// Gets or Sets RelatedSeries
         /// </summary>
-        [DataMember(Name = "related_series", EmitDefaultValue = false)]
+        [JsonPropertyName("related_series")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1RelatedSeries> RelatedSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets Authors
         /// </summary>
-        [DataMember(Name = "authors", EmitDefaultValue = false)]
+        [JsonPropertyName("authors")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1Authors> Authors { get; set; }
 
         /// <summary>
         /// Gets or Sets Publishers
         /// </summary>
-        [DataMember(Name = "publishers", EmitDefaultValue = false)]
+        [JsonPropertyName("publishers")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1Publishers> Publishers { get; set; }
 
         /// <summary>
         /// Gets or Sets Publications
         /// </summary>
-        [DataMember(Name = "publications", EmitDefaultValue = false)]
+        [JsonPropertyName("publications")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesModelV1Publications> Publications { get; set; }
 
         /// <summary>
         /// Gets or Sets Recommendations
         /// </summary>
-        [DataMember(Name = "recommendations", EmitDefaultValue = false)]
+        [JsonPropertyName("recommendations")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesRecommendationsModelV1> Recommendations { get; set; }
 
         /// <summary>
         /// Gets or Sets CategoryRecommendations
         /// </summary>
-        [DataMember(Name = "category_recommendations", EmitDefaultValue = false)]
+        [JsonPropertyName("category_recommendations")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<SeriesRecommendationsModelV1> CategoryRecommendations { get; set; }
 
         /// <summary>
         /// Gets or Sets Rank
         /// </summary>
-        [DataMember(Name = "rank", EmitDefaultValue = false)]
+        [JsonPropertyName("rank")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelV1Rank Rank { get; set; }
 
         /// <summary>
         /// Gets or Sets LastUpdated
         /// </summary>
-        [DataMember(Name = "last_updated", EmitDefaultValue = false)]
+        [JsonPropertyName("last_updated")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TimeV1 LastUpdated { get; set; }
 
         /// <summary>
         /// Gets or Sets Admin
         /// </summary>
-        [DataMember(Name = "admin", EmitDefaultValue = false)]
+        [JsonPropertyName("admin")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SeriesModelV1Admin Admin { get; set; }
 
         /// <summary>
@@ -403,7 +425,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

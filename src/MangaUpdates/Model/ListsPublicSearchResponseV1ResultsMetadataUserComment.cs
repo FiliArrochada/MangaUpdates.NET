@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -45,13 +42,15 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets CommentId
         /// </summary>
-        [DataMember(Name = "comment_id", EmitDefaultValue = false)]
+        [JsonPropertyName("comment_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long CommentId { get; set; }
 
         /// <summary>
         /// Gets or Sets CommentPreview
         /// </summary>
-        [DataMember(Name = "comment_preview", EmitDefaultValue = false)]
+        [JsonPropertyName("comment_preview")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string CommentPreview { get; set; }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

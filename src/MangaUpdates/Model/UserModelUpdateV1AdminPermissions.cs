@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -73,97 +70,97 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets PAddReleases
         /// </summary>
-        [DataMember(Name = "p_add_releases", EmitDefaultValue = true)]
+        [JsonPropertyName("p_add_releases")]
         public bool PAddReleases { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditUsers
         /// </summary>
-        [DataMember(Name = "p_edit_users", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_users")]
         public bool PEditUsers { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditGroups
         /// </summary>
-        [DataMember(Name = "p_edit_groups", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_groups")]
         public bool PEditGroups { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditPoll
         /// </summary>
-        [DataMember(Name = "p_edit_poll", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_poll")]
         public bool PEditPoll { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditSeries
         /// </summary>
-        [DataMember(Name = "p_edit_series", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_series")]
         public bool PEditSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditReviews
         /// </summary>
-        [DataMember(Name = "p_edit_reviews", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_reviews")]
         public bool PEditReviews { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditNews
         /// </summary>
-        [DataMember(Name = "p_edit_news", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_news")]
         public bool PEditNews { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditAffiliates
         /// </summary>
-        [DataMember(Name = "p_edit_affiliates", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_affiliates")]
         public bool PEditAffiliates { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditAboutus
         /// </summary>
-        [DataMember(Name = "p_edit_aboutus", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_aboutus")]
         public bool PEditAboutus { get; set; }
 
         /// <summary>
         /// Gets or Sets PViewLog
         /// </summary>
-        [DataMember(Name = "p_view_log", EmitDefaultValue = true)]
+        [JsonPropertyName("p_view_log")]
         public bool PViewLog { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditConfig
         /// </summary>
-        [DataMember(Name = "p_edit_config", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_config")]
         public bool PEditConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets PViewStats
         /// </summary>
-        [DataMember(Name = "p_view_stats", EmitDefaultValue = true)]
+        [JsonPropertyName("p_view_stats")]
         public bool PViewStats { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditGenre
         /// </summary>
-        [DataMember(Name = "p_edit_genre", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_genre")]
         public bool PEditGenre { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditAuthors
         /// </summary>
-        [DataMember(Name = "p_edit_authors", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_authors")]
         public bool PEditAuthors { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditPublishers
         /// </summary>
-        [DataMember(Name = "p_edit_publishers", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_publishers")]
         public bool PEditPublishers { get; set; }
 
         /// <summary>
         /// Gets or Sets PEditPartialUsers
         /// </summary>
-        [DataMember(Name = "p_edit_partial_users", EmitDefaultValue = true)]
+        [JsonPropertyName("p_edit_partial_users")]
         public bool PEditPartialUsers { get; set; }
 
         /// <summary>
@@ -200,7 +197,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

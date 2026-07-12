@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,43 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Site
         /// </summary>
-        [DataMember(Name = "site", EmitDefaultValue = false)]
+        [JsonPropertyName("site")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Site { get; set; }
 
         /// <summary>
         /// Gets or Sets Facebook
         /// </summary>
-        [DataMember(Name = "facebook", EmitDefaultValue = false)]
+        [JsonPropertyName("facebook")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Facebook { get; set; }
 
         /// <summary>
         /// Gets or Sets Twitter
         /// </summary>
-        [DataMember(Name = "twitter", EmitDefaultValue = false)]
+        [JsonPropertyName("twitter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Twitter { get; set; }
 
         /// <summary>
         /// Gets or Sets Irc
         /// </summary>
-        [DataMember(Name = "irc", EmitDefaultValue = false)]
+        [JsonPropertyName("irc")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GroupsModelSearchV1SocialIrc Irc { get; set; }
 
         /// <summary>
         /// Gets or Sets Forum
         /// </summary>
-        [DataMember(Name = "forum", EmitDefaultValue = false)]
+        [JsonPropertyName("forum")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Forum { get; set; }
 
         /// <summary>
         /// Gets or Sets Discord
         /// </summary>
-        [DataMember(Name = "discord", EmitDefaultValue = false)]
+        [JsonPropertyName("discord")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Discord { get; set; }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

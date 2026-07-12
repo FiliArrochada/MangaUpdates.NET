@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -34,7 +31,7 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Defines Stype
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum StypeEnum
         {
             /// <summary>
@@ -55,12 +52,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Stype
         /// </summary>
-        [DataMember(Name = "stype", EmitDefaultValue = false)]
+        [JsonPropertyName("stype")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public StypeEnum? Stype { get; set; }
         /// <summary>
         /// Defines Licensed
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum LicensedEnum
         {
             /// <summary>
@@ -81,12 +79,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Licensed
         /// </summary>
-        [DataMember(Name = "licensed", EmitDefaultValue = false)]
+        [JsonPropertyName("licensed")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public LicensedEnum? Licensed { get; set; }
         /// <summary>
         /// Defines Filter
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum FilterEnum
         {
             /// <summary>
@@ -131,12 +130,13 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Filter
         /// </summary>
-        [DataMember(Name = "filter", EmitDefaultValue = false)]
+        [JsonPropertyName("filter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public FilterEnum? Filter { get; set; }
         /// <summary>
         /// Defines Orderby
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(MangaUpdates.Client.JsonStringEnumMemberConverter))]
         public enum OrderbyEnum
         {
             /// <summary>
@@ -235,7 +235,8 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Orderby
         /// </summary>
-        [DataMember(Name = "orderby", EmitDefaultValue = false)]
+        [JsonPropertyName("orderby")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OrderbyEnum? Orderby { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesSearchRequestV1" /> class.
@@ -285,91 +286,103 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Search
         /// </summary>
-        [DataMember(Name = "search", EmitDefaultValue = false)]
+        [JsonPropertyName("search")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Search { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedBy
         /// </summary>
-        [DataMember(Name = "added_by", EmitDefaultValue = false)]
+        [JsonPropertyName("added_by")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long AddedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Year
         /// </summary>
-        [DataMember(Name = "year", EmitDefaultValue = false)]
+        [JsonPropertyName("year")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Year { get; set; }
 
         /// <summary>
         /// Gets or Sets FilterTypes
         /// </summary>
-        [DataMember(Name = "filter_types", EmitDefaultValue = false)]
+        [JsonPropertyName("filter_types")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> FilterTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets Category
         /// </summary>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
+        [JsonPropertyName("category")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> Category { get; set; }
 
         /// <summary>
         /// Gets or Sets List
         /// </summary>
-        [DataMember(Name = "list", EmitDefaultValue = false)]
+        [JsonPropertyName("list")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string List { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonPropertyName("page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Page { get; set; }
 
         /// <summary>
         /// Gets or Sets Perpage
         /// </summary>
-        [DataMember(Name = "perpage", EmitDefaultValue = false)]
+        [JsonPropertyName("perpage")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Perpage { get; set; }
 
         /// <summary>
         /// Gets or Sets Letter
         /// </summary>
-        [DataMember(Name = "letter", EmitDefaultValue = false)]
+        [JsonPropertyName("letter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Letter { get; set; }
 
         /// <summary>
         /// Gets or Sets Genre
         /// </summary>
-        [DataMember(Name = "genre", EmitDefaultValue = false)]
+        [JsonPropertyName("genre")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> Genre { get; set; }
 
         /// <summary>
         /// Gets or Sets ExcludeGenre
         /// </summary>
-        [DataMember(Name = "exclude_genre", EmitDefaultValue = false)]
+        [JsonPropertyName("exclude_genre")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<string> ExcludeGenre { get; set; }
 
         /// <summary>
         /// Gets or Sets Pending
         /// </summary>
-        [DataMember(Name = "pending", EmitDefaultValue = true)]
+        [JsonPropertyName("pending")]
         public bool Pending { get; set; }
 
         /// <summary>
         /// Gets or Sets IncludeRankMetadata
         /// </summary>
-        [DataMember(Name = "include_rank_metadata", EmitDefaultValue = true)]
+        [JsonPropertyName("include_rank_metadata")]
         public bool IncludeRankMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets ExcludeFilteredGenres
         /// </summary>
-        [DataMember(Name = "exclude_filtered_genres", EmitDefaultValue = true)]
+        [JsonPropertyName("exclude_filtered_genres")]
         public bool ExcludeFilteredGenres { get; set; }
 
         /// <summary>
@@ -409,7 +422,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

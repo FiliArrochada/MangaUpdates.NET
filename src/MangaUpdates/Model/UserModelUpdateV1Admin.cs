@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -53,37 +50,38 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets IsAdmin
         /// </summary>
-        [DataMember(Name = "is_admin", EmitDefaultValue = true)]
+        [JsonPropertyName("is_admin")]
         public bool IsAdmin { get; set; }
 
         /// <summary>
         /// Gets or Sets Permissions
         /// </summary>
-        [DataMember(Name = "permissions", EmitDefaultValue = false)]
+        [JsonPropertyName("permissions")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public UserModelUpdateV1AdminPermissions Permissions { get; set; }
 
         /// <summary>
         /// Gets or Sets Approved
         /// </summary>
-        [DataMember(Name = "approved", EmitDefaultValue = true)]
+        [JsonPropertyName("approved")]
         public bool Approved { get; set; }
 
         /// <summary>
         /// Gets or Sets EmailApproved
         /// </summary>
-        [DataMember(Name = "email_approved", EmitDefaultValue = true)]
+        [JsonPropertyName("email_approved")]
         public bool EmailApproved { get; set; }
 
         /// <summary>
         /// Gets or Sets ForumAdmin
         /// </summary>
-        [DataMember(Name = "forum_admin", EmitDefaultValue = true)]
+        [JsonPropertyName("forum_admin")]
         public bool ForumAdmin { get; set; }
 
         /// <summary>
         /// Gets or Sets Banned
         /// </summary>
-        [DataMember(Name = "banned", EmitDefaultValue = true)]
+        [JsonPropertyName("banned")]
         public bool Banned { get; set; }
 
         /// <summary>
@@ -110,7 +108,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

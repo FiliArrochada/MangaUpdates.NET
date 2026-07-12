@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -47,19 +44,20 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets Moderated
         /// </summary>
-        [DataMember(Name = "moderated", EmitDefaultValue = true)]
+        [JsonPropertyName("moderated")]
         public bool Moderated { get; set; }
 
         /// <summary>
         /// Gets or Sets Reported
         /// </summary>
-        [DataMember(Name = "reported", EmitDefaultValue = true)]
+        [JsonPropertyName("reported")]
         public bool Reported { get; set; }
 
         /// <summary>
         /// Gets or Sets ReportReason
         /// </summary>
-        [DataMember(Name = "report_reason", EmitDefaultValue = false)]
+        [JsonPropertyName("report_reason")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string ReportReason { get; set; }
 
         /// <summary>
@@ -83,7 +81,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>

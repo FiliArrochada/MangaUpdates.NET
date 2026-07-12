@@ -15,13 +15,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = MangaUpdates.Client.OpenAPIDateConverter;
 
 namespace MangaUpdates.Model
 {
@@ -51,31 +48,36 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Gets or Sets TotalHits
         /// </summary>
-        [DataMember(Name = "total_hits", EmitDefaultValue = false)]
+        [JsonPropertyName("total_hits")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long TotalHits { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name = "page", EmitDefaultValue = false)]
+        [JsonPropertyName("page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long Page { get; set; }
 
         /// <summary>
         /// Gets or Sets PerPage
         /// </summary>
-        [DataMember(Name = "per_page", EmitDefaultValue = false)]
+        [JsonPropertyName("per_page")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public long PerPage { get; set; }
 
         /// <summary>
         /// Gets or Sets TopicResults
         /// </summary>
-        [DataMember(Name = "topic_results", EmitDefaultValue = false)]
+        [JsonPropertyName("topic_results")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<ForumSearchResponseV1TopicResults> TopicResults { get; set; }
 
         /// <summary>
         /// Gets or Sets PostResults
         /// </summary>
-        [DataMember(Name = "post_results", EmitDefaultValue = false)]
+        [JsonPropertyName("post_results")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<ForumSearchResponseV1PostResults> PostResults { get; set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace MangaUpdates.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return System.Text.Json.JsonSerializer.Serialize(this);
         }
 
         /// <summary>
