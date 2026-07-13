@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\MangaUpdates\MangaUpdates.csproj" />
+    <ProjectReference Include="..\..\src\MangaUpdates\MangaUpdates.csproj" />
   </ItemGroup>
 </Project>

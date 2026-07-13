@@ -14,7 +14,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Migrated the client from the OpenAPI Generator (RestSharp) to Refit with System.Text.Json.</PackageReleaseNotes>
+    <PackageReleaseNotes>Migrated the client from RestSharp to Refit with System.Text.Json.</PackageReleaseNotes>
     <Nullable>annotations</Nullable>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
