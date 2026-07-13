@@ -9,7 +9,11 @@
     <Company>MangaUpdates.NET</Company>
     <AssemblyTitle>MangaUpdates API client</AssemblyTitle>
     <Description>A type-safe C# client for the MangaUpdates API, built on Refit.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RootNamespace>MangaUpdates</RootNamespace>
+    <!-- Package version tracks the API's info.version. The release workflow overrides
+         this at pack time with the value read from api/openapi.yaml, so a published
+         package always matches the API version it targets. -->
     <Version>1.0.0</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
@@ -23,6 +27,12 @@
     <PackageReference Include="Refit" Version="13.1.0" />
     <PackageReference Include="Refit.HttpClientFactory" Version="13.1.0" />
     <PackageReference Include="Polly" Version="8.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ship the repo README as the package readme (referenced by PackageReadmeFile above).
+         Path is relative to this project (repo root is two levels up). -->
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
