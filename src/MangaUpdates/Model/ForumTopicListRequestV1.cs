@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -43,9 +37,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "topic_start_date")]
             TopicStartDate = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Orderby
@@ -53,6 +45,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("orderby")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OrderbyEnum? Orderby { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumTopicListRequestV1" /> class.
         /// </summary>
@@ -125,15 +118,15 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Page == input.Page ||
                     this.Page.Equals(input.Page)
-                ) && 
+                ) &&
                 (
                     this.Perpage == input.Perpage ||
                     this.Perpage.Equals(input.Perpage)
-                ) && 
+                ) &&
                 (
                     this.Orderby == input.Orderby ||
                     this.Orderby.Equals(input.Orderby)
@@ -166,5 +159,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

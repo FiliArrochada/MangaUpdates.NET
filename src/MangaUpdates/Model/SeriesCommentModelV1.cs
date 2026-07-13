@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -165,44 +159,44 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     this.Id.Equals(input.Id)
-                ) && 
+                ) &&
                 (
                     this.SeriesId == input.SeriesId ||
                     this.SeriesId.Equals(input.SeriesId)
-                ) && 
+                ) &&
                 (
                     this.Subject == input.Subject ||
                     (this.Subject != null &&
                     this.Subject.Equals(input.Subject))
-                ) && 
+                ) &&
                 (
                     this.Content == input.Content ||
                     (this.Content != null &&
                     this.Content.Equals(input.Content))
-                ) && 
+                ) &&
                 (
                     this.Author == input.Author ||
                     (this.Author != null &&
                     this.Author.Equals(input.Author))
-                ) && 
+                ) &&
                 (
                     this.Useful == input.Useful ||
                     this.Useful.Equals(input.Useful)
-                ) && 
+                ) &&
                 (
                     this.TimeAdded == input.TimeAdded ||
                     (this.TimeAdded != null &&
                     this.TimeAdded.Equals(input.TimeAdded))
-                ) && 
+                ) &&
                 (
                     this.TimeUpdated == input.TimeUpdated ||
                     (this.TimeUpdated != null &&
                     this.TimeUpdated.Equals(input.TimeUpdated))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -260,5 +254,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -43,9 +37,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "topic")]
             Topic = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets SearchBy
@@ -53,6 +45,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("search_by")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SearchByEnum? SearchBy { get; set; }
+
         /// <summary>
         /// Defines Method
         /// </summary>
@@ -70,9 +63,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "exact")]
             Exact = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Method
@@ -80,6 +71,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("method")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MethodEnum? Method { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumSearchRequestV1" /> class.
         /// </summary>
@@ -215,44 +207,44 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.SearchBy == input.SearchBy ||
                     this.SearchBy.Equals(input.SearchBy)
-                ) && 
+                ) &&
                 (
                     this.Method == input.Method ||
                     this.Method.Equals(input.Method)
-                ) && 
+                ) &&
                 (
                     this.Search == input.Search ||
                     (this.Search != null &&
                     this.Search.Equals(input.Search))
-                ) && 
+                ) &&
                 (
                     this.Since == input.Since ||
                     this.Since.Equals(input.Since)
-                ) && 
+                ) &&
                 (
                     this.AfterId == input.AfterId ||
                     this.AfterId.Equals(input.AfterId)
-                ) && 
+                ) &&
                 (
                     this.BeforeId == input.BeforeId ||
                     this.BeforeId.Equals(input.BeforeId)
-                ) && 
+                ) &&
                 (
                     this.Page == input.Page ||
                     this.Page.Equals(input.Page)
-                ) && 
+                ) &&
                 (
                     this.Perpage == input.Perpage ||
                     this.Perpage.Equals(input.Perpage)
-                ) && 
+                ) &&
                 (
                     this.ByUserId == input.ByUserId ||
                     this.ByUserId.Equals(input.ByUserId)
-                ) && 
+                ) &&
                 (
                     this.FilterUserId == input.FilterUserId ||
                     this.FilterUserId.Equals(input.FilterUserId)
@@ -295,5 +287,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

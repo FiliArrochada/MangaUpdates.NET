@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -95,11 +90,11 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.TopicId == input.TopicId ||
                     this.TopicId.Equals(input.TopicId)
-                ) && 
+                ) &&
                 (
                     this.PostIdList == input.PostIdList ||
                     this.PostIdList != null &&
@@ -136,5 +131,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

@@ -18,13 +18,13 @@ namespace MangaUpdates.Api
         [Delete("/poll")]
         Task<ApiResponseV1> ArchivePoll(CancellationToken cancellationToken = default);
 
-        /// <summary>get old polls</summary>
-        [Get("/poll/old")]
-        Task<ApiResponseV1> RetrieveOldPolls(CancellationToken cancellationToken = default);
-
         /// <summary>get the active poll</summary>
         [Get("/poll")]
         Task<PollModelV1> RetrievePoll(CancellationToken cancellationToken = default);
+
+        /// <summary>search archived polls</summary>
+        [Post("/poll/search")]
+        Task<PollArchiveSearchResponseV1> SearchPollArchive([Body] PollArchiveSearchRequestV1 pollArchiveSearchRequestV1, CancellationToken cancellationToken = default);
 
         /// <summary>get information about whether the user has voted</summary>
         [Get("/poll/vote/status")]

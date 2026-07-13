@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -105,11 +99,11 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Timestamp == input.Timestamp ||
                     this.Timestamp.Equals(input.Timestamp)
-                ) && 
+                ) &&
                 (
                     this.AsRfc3339 == input.AsRfc3339 ||
                     this.AsRfc3339.Equals(input.AsRfc3339)
@@ -150,5 +144,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

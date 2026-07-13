@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -115,24 +110,24 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.ReleaseFrequency == input.ReleaseFrequency ||
                     (this.ReleaseFrequency != null &&
                     this.ReleaseFrequency.Equals(input.ReleaseFrequency))
-                ) && 
+                ) &&
                 (
                     this.SeriesTitles == input.SeriesTitles ||
                     this.SeriesTitles != null &&
                     input.SeriesTitles != null &&
                     this.SeriesTitles.SequenceEqual(input.SeriesTitles)
-                ) && 
+                ) &&
                 (
                     this.SeriesGenres == input.SeriesGenres ||
                     this.SeriesGenres != null &&
                     input.SeriesGenres != null &&
                     this.SeriesGenres.SequenceEqual(input.SeriesGenres)
-                ) && 
+                ) &&
                 (
                     this.SeriesCategories == input.SeriesCategories ||
                     this.SeriesCategories != null &&
@@ -180,5 +175,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

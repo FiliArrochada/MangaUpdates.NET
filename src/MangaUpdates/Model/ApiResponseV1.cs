@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +24,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="ApiResponseV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ApiResponseV1() { }
+        protected ApiResponseV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiResponseV1" /> class.
         /// </summary>
@@ -118,17 +114,17 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
-                ) && 
+                ) &&
                 (
                     this.Context == input.Context ||
                     (this.Context != null &&
@@ -171,5 +167,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

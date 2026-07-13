@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -43,9 +37,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "time_added")]
             TimeAdded = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Method
@@ -53,6 +45,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("method")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MethodEnum? Method { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesCommentSearchRequestV1" /> class.
         /// </summary>
@@ -135,19 +128,19 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Method == input.Method ||
                     this.Method.Equals(input.Method)
-                ) && 
+                ) &&
                 (
                     this.AddedBy == input.AddedBy ||
                     this.AddedBy.Equals(input.AddedBy)
-                ) && 
+                ) &&
                 (
                     this.Page == input.Page ||
                     this.Page.Equals(input.Page)
-                ) && 
+                ) &&
                 (
                     this.Perpage == input.Perpage ||
                     this.Perpage.Equals(input.Perpage)
@@ -181,5 +174,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

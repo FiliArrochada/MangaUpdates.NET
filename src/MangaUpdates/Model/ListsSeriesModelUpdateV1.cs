@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +24,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="ListsSeriesModelUpdateV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ListsSeriesModelUpdateV1() { }
+        protected ListsSeriesModelUpdateV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsSeriesModelUpdateV1" /> class.
         /// </summary>
@@ -124,21 +120,21 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Series == input.Series ||
                     (this.Series != null &&
                     this.Series.Equals(input.Series))
-                ) && 
+                ) &&
                 (
                     this.ListId == input.ListId ||
                     this.ListId.Equals(input.ListId)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Priority == input.Priority ||
                     this.Priority.Equals(input.Priority)
@@ -178,5 +174,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

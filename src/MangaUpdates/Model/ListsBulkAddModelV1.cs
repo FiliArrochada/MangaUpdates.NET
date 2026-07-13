@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -43,9 +37,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Low")]
             Low = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Priority
@@ -53,6 +45,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("priority")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public PriorityEnum? Priority { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsBulkAddModelV1" /> class.
         /// </summary>
@@ -115,11 +108,11 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Priority == input.Priority ||
                     this.Priority.Equals(input.Priority)
-                ) && 
+                ) &&
                 (
                     this.SeriesTitle == input.SeriesTitle ||
                     (this.SeriesTitle != null &&
@@ -155,5 +148,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

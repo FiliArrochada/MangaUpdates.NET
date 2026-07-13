@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -61,9 +56,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "O")]
             O = 5
-
         }
-
 
         /// <summary>
         /// Gets or Sets Bloodtype
@@ -71,6 +64,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("bloodtype")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public BloodtypeEnum? Bloodtype { get; set; }
+
         /// <summary>
         /// Defines Gender
         /// </summary>
@@ -100,9 +94,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Other")]
             Other = 4
-
         }
-
 
         /// <summary>
         /// Gets or Sets Gender
@@ -110,6 +102,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("gender")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GenderEnum? Gender { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorsModelV1" /> class.
         /// </summary>
@@ -315,86 +308,86 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     this.Id.Equals(input.Id)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Associated == input.Associated ||
                     this.Associated != null &&
                     input.Associated != null &&
                     this.Associated.SequenceEqual(input.Associated)
-                ) && 
+                ) &&
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
+                ) &&
                 (
                     this.Actualname == input.Actualname ||
                     (this.Actualname != null &&
                     this.Actualname.Equals(input.Actualname))
-                ) && 
+                ) &&
                 (
                     this.Birthday == input.Birthday ||
                     (this.Birthday != null &&
                     this.Birthday.Equals(input.Birthday))
-                ) && 
+                ) &&
                 (
                     this.Birthplace == input.Birthplace ||
                     (this.Birthplace != null &&
                     this.Birthplace.Equals(input.Birthplace))
-                ) && 
+                ) &&
                 (
                     this.Bloodtype == input.Bloodtype ||
                     this.Bloodtype.Equals(input.Bloodtype)
-                ) && 
+                ) &&
                 (
                     this.Gender == input.Gender ||
                     this.Gender.Equals(input.Gender)
-                ) && 
+                ) &&
                 (
                     this.Genres == input.Genres ||
                     this.Genres != null &&
                     input.Genres != null &&
                     this.Genres.SequenceEqual(input.Genres)
-                ) && 
+                ) &&
                 (
                     this.Stats == input.Stats ||
                     (this.Stats != null &&
                     this.Stats.Equals(input.Stats))
-                ) && 
+                ) &&
                 (
                     this.Social == input.Social ||
                     (this.Social != null &&
                     this.Social.Equals(input.Social))
-                ) && 
+                ) &&
                 (
                     this.Comments == input.Comments ||
                     (this.Comments != null &&
                     this.Comments.Equals(input.Comments))
-                ) && 
+                ) &&
                 (
                     this.LastUpdated == input.LastUpdated ||
                     (this.LastUpdated != null &&
                     this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
+                ) &&
                 (
                     this.AddedBy == input.AddedBy ||
                     (this.AddedBy != null &&
                     this.AddedBy.Equals(input.AddedBy))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -484,5 +477,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

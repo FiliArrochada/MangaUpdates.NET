@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +24,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="ForumWarnModelV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ForumWarnModelV1() { }
+        protected ForumWarnModelV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumWarnModelV1" /> class.
         /// </summary>
@@ -142,29 +138,29 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.UserId == input.UserId ||
                     this.UserId.Equals(input.UserId)
-                ) && 
+                ) &&
                 (
                     this.TimeAdded == input.TimeAdded ||
                     (this.TimeAdded != null &&
                     this.TimeAdded.Equals(input.TimeAdded))
-                ) && 
+                ) &&
                 (
                     this.Level == input.Level ||
                     this.Level.Equals(input.Level)
-                ) && 
+                ) &&
                 (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
-                ) && 
+                ) &&
                 (
                     this.SendReason == input.SendReason ||
                     this.SendReason.Equals(input.SendReason)
-                ) && 
+                ) &&
                 (
                     this.ByUser == input.ByUser ||
                     (this.ByUser != null &&
@@ -210,5 +206,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -145,36 +139,36 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.PostId == input.PostId ||
                     this.PostId.Equals(input.PostId)
-                ) && 
+                ) &&
                 (
                     this.Body == input.Body ||
                     (this.Body != null &&
                     this.Body.Equals(input.Body))
-                ) && 
+                ) &&
                 (
                     this.Topic == input.Topic ||
                     (this.Topic != null &&
                     this.Topic.Equals(input.Topic))
-                ) && 
+                ) &&
                 (
                     this.Author == input.Author ||
                     (this.Author != null &&
                     this.Author.Equals(input.Author))
-                ) && 
+                ) &&
                 (
                     this.ReplyTo == input.ReplyTo ||
                     (this.ReplyTo != null &&
                     this.ReplyTo.Equals(input.ReplyTo))
-                ) && 
+                ) &&
                 (
                     this.LastEdit == input.LastEdit ||
                     (this.LastEdit != null &&
                     this.LastEdit.Equals(input.LastEdit))
-                ) && 
+                ) &&
                 (
                     this.TimeAdded == input.TimeAdded ||
                     (this.TimeAdded != null &&
@@ -230,5 +224,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

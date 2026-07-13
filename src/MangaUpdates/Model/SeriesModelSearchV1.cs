@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -127,9 +122,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Spanish")]
             Spanish = 16
-
         }
-
 
         /// <summary>
         /// Gets or Sets Type
@@ -319,68 +312,68 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.SeriesId == input.SeriesId ||
                     this.SeriesId.Equals(input.SeriesId)
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Year == input.Year ||
                     (this.Year != null &&
                     this.Year.Equals(input.Year))
-                ) && 
+                ) &&
                 (
                     this.BayesianRating == input.BayesianRating ||
                     this.BayesianRating.Equals(input.BayesianRating)
-                ) && 
+                ) &&
                 (
                     this.RatingVotes == input.RatingVotes ||
                     this.RatingVotes.Equals(input.RatingVotes)
-                ) && 
+                ) &&
                 (
                     this.Genres == input.Genres ||
                     this.Genres != null &&
                     input.Genres != null &&
                     this.Genres.SequenceEqual(input.Genres)
-                ) && 
+                ) &&
                 (
                     this.LatestChapter == input.LatestChapter ||
                     this.LatestChapter.Equals(input.LatestChapter)
-                ) && 
+                ) &&
                 (
                     this.Rank == input.Rank ||
                     (this.Rank != null &&
                     this.Rank.Equals(input.Rank))
-                ) && 
+                ) &&
                 (
                     this.LastUpdated == input.LastUpdated ||
                     (this.LastUpdated != null &&
                     this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -452,5 +445,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

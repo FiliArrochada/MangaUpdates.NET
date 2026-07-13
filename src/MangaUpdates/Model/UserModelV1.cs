@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -61,9 +55,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Hermaphrodite")]
             Hermaphrodite = 5
-
         }
-
 
         /// <summary>
         /// Gets or Sets Gender
@@ -71,6 +63,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("gender")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public GenderEnum? Gender { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UserModelV1" /> class.
         /// </summary>
@@ -312,97 +305,97 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.UserId == input.UserId ||
                     this.UserId.Equals(input.UserId)
-                ) && 
+                ) &&
                 (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
-                ) && 
+                ) &&
                 (
                     this.Avatar == input.Avatar ||
                     (this.Avatar != null &&
                     this.Avatar.Equals(input.Avatar))
-                ) && 
+                ) &&
                 (
                     this.TimeJoined == input.TimeJoined ||
                     (this.TimeJoined != null &&
                     this.TimeJoined.Equals(input.TimeJoined))
-                ) && 
+                ) &&
                 (
                     this.LastActiveTime == input.LastActiveTime ||
                     (this.LastActiveTime != null &&
                     this.LastActiveTime.Equals(input.LastActiveTime))
-                ) && 
+                ) &&
                 (
                     this.Gender == input.Gender ||
                     this.Gender.Equals(input.Gender)
-                ) && 
+                ) &&
                 (
                     this.Birthday == input.Birthday ||
                     (this.Birthday != null &&
                     this.Birthday.Equals(input.Birthday))
-                ) && 
+                ) &&
                 (
                     this.Age == input.Age ||
                     this.Age.Equals(input.Age)
-                ) && 
+                ) &&
                 (
                     this.Timezone == input.Timezone ||
                     this.Timezone.Equals(input.Timezone)
-                ) && 
+                ) &&
                 (
                     this.Signature == input.Signature ||
                     (this.Signature != null &&
                     this.Signature.Equals(input.Signature))
-                ) && 
+                ) &&
                 (
                     this.Location == input.Location ||
                     (this.Location != null &&
                     this.Location.Equals(input.Location))
-                ) && 
+                ) &&
                 (
                     this.ForumTitle == input.ForumTitle ||
                     (this.ForumTitle != null &&
                     this.ForumTitle.Equals(input.ForumTitle))
-                ) && 
+                ) &&
                 (
                     this.FoldingAtHome == input.FoldingAtHome ||
                     this.FoldingAtHome.Equals(input.FoldingAtHome)
-                ) && 
+                ) &&
                 (
                     this.Profile == input.Profile ||
                     (this.Profile != null &&
                     this.Profile.Equals(input.Profile))
-                ) && 
+                ) &&
                 (
                     this.Stats == input.Stats ||
                     (this.Stats != null &&
                     this.Stats.Equals(input.Stats))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
                     this.Admin.Equals(input.Admin))
-                ) && 
+                ) &&
                 (
                     this.UserGroup == input.UserGroup ||
                     (this.UserGroup != null &&
                     this.UserGroup.Equals(input.UserGroup))
-                ) && 
+                ) &&
                 (
                     this.UserGroupName == input.UserGroupName ||
                     (this.UserGroupName != null &&
@@ -498,5 +491,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

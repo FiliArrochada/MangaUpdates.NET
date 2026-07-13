@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -145,37 +140,37 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     this.Id.Equals(input.Id)
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Volume == input.Volume ||
                     (this.Volume != null &&
                     this.Volume.Equals(input.Volume))
-                ) && 
+                ) &&
                 (
                     this.Chapter == input.Chapter ||
                     (this.Chapter != null &&
                     this.Chapter.Equals(input.Chapter))
-                ) && 
+                ) &&
                 (
                     this.Groups == input.Groups ||
                     this.Groups != null &&
                     input.Groups != null &&
                     this.Groups.SequenceEqual(input.Groups)
-                ) && 
+                ) &&
                 (
                     this.ReleaseDate == input.ReleaseDate ||
                     (this.ReleaseDate != null &&
                     this.ReleaseDate.Equals(input.ReleaseDate))
-                ) && 
+                ) &&
                 (
                     this.TimeAdded == input.TimeAdded ||
                     (this.TimeAdded != null &&
@@ -231,5 +226,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

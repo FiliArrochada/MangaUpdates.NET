@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +24,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="ForumPollAnswerModelV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ForumPollAnswerModelV1() { }
+        protected ForumPollAnswerModelV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumPollAnswerModelV1" /> class.
         /// </summary>
@@ -123,20 +119,20 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.AnswerId == input.AnswerId ||
                     this.AnswerId.Equals(input.AnswerId)
-                ) && 
+                ) &&
                 (
                     this.Answer == input.Answer ||
                     (this.Answer != null &&
                     this.Answer.Equals(input.Answer))
-                ) && 
+                ) &&
                 (
                     this.Votes == input.Votes ||
                     this.Votes.Equals(input.Votes)
-                ) && 
+                ) &&
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
@@ -177,5 +173,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

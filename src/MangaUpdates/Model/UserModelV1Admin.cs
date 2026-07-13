@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -170,48 +164,48 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.IsAdmin == input.IsAdmin ||
                     this.IsAdmin.Equals(input.IsAdmin)
-                ) && 
+                ) &&
                 (
                     this.RegistrationIp == input.RegistrationIp ||
                     (this.RegistrationIp != null &&
                     this.RegistrationIp.Equals(input.RegistrationIp))
-                ) && 
+                ) &&
                 (
                     this.Permissions == input.Permissions ||
                     (this.Permissions != null &&
                     this.Permissions.Equals(input.Permissions))
-                ) && 
+                ) &&
                 (
                     this.LastSeriesUpdate == input.LastSeriesUpdate ||
                     (this.LastSeriesUpdate != null &&
                     this.LastSeriesUpdate.Equals(input.LastSeriesUpdate))
-                ) && 
+                ) &&
                 (
                     this.Approved == input.Approved ||
                     this.Approved.Equals(input.Approved)
-                ) && 
+                ) &&
                 (
                     this.EmailApproved == input.EmailApproved ||
                     this.EmailApproved.Equals(input.EmailApproved)
-                ) && 
+                ) &&
                 (
                     this.ForumAdmin == input.ForumAdmin ||
                     this.ForumAdmin.Equals(input.ForumAdmin)
-                ) && 
+                ) &&
                 (
                     this.RegistrationReason == input.RegistrationReason ||
                     (this.RegistrationReason != null &&
                     this.RegistrationReason.Equals(input.RegistrationReason))
-                ) && 
+                ) &&
                 (
                     this.Upgrade == input.Upgrade ||
                     (this.Upgrade != null &&
                     this.Upgrade.Equals(input.Upgrade))
-                ) && 
+                ) &&
                 (
                     this.Banned == input.Banned ||
                     this.Banned.Equals(input.Banned)
@@ -266,5 +260,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

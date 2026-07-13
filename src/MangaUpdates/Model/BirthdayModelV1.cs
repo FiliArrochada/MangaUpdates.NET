@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -125,24 +119,24 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Month == input.Month ||
                     this.Month.Equals(input.Month)
-                ) && 
+                ) &&
                 (
                     this.Day == input.Day ||
                     this.Day.Equals(input.Day)
-                ) && 
+                ) &&
                 (
                     this.Year == input.Year ||
                     this.Year.Equals(input.Year)
-                ) && 
+                ) &&
                 (
                     this.AsString == input.AsString ||
                     (this.AsString != null &&
                     this.AsString.Equals(input.AsString))
-                ) && 
+                ) &&
                 (
                     this.Zodiac == input.Zodiac ||
                     (this.Zodiac != null &&
@@ -184,5 +178,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

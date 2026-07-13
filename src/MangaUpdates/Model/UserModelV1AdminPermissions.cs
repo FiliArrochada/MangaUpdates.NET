@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -219,67 +213,67 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.PAddReleases == input.PAddReleases ||
                     this.PAddReleases.Equals(input.PAddReleases)
-                ) && 
+                ) &&
                 (
                     this.PEditUsers == input.PEditUsers ||
                     this.PEditUsers.Equals(input.PEditUsers)
-                ) && 
+                ) &&
                 (
                     this.PEditGroups == input.PEditGroups ||
                     this.PEditGroups.Equals(input.PEditGroups)
-                ) && 
+                ) &&
                 (
                     this.PEditPoll == input.PEditPoll ||
                     this.PEditPoll.Equals(input.PEditPoll)
-                ) && 
+                ) &&
                 (
                     this.PEditSeries == input.PEditSeries ||
                     this.PEditSeries.Equals(input.PEditSeries)
-                ) && 
+                ) &&
                 (
                     this.PEditReviews == input.PEditReviews ||
                     this.PEditReviews.Equals(input.PEditReviews)
-                ) && 
+                ) &&
                 (
                     this.PEditNews == input.PEditNews ||
                     this.PEditNews.Equals(input.PEditNews)
-                ) && 
+                ) &&
                 (
                     this.PEditAffiliates == input.PEditAffiliates ||
                     this.PEditAffiliates.Equals(input.PEditAffiliates)
-                ) && 
+                ) &&
                 (
                     this.PEditAboutus == input.PEditAboutus ||
                     this.PEditAboutus.Equals(input.PEditAboutus)
-                ) && 
+                ) &&
                 (
                     this.PViewLog == input.PViewLog ||
                     this.PViewLog.Equals(input.PViewLog)
-                ) && 
+                ) &&
                 (
                     this.PEditConfig == input.PEditConfig ||
                     this.PEditConfig.Equals(input.PEditConfig)
-                ) && 
+                ) &&
                 (
                     this.PViewStats == input.PViewStats ||
                     this.PViewStats.Equals(input.PViewStats)
-                ) && 
+                ) &&
                 (
                     this.PEditGenre == input.PEditGenre ||
                     this.PEditGenre.Equals(input.PEditGenre)
-                ) && 
+                ) &&
                 (
                     this.PEditAuthors == input.PEditAuthors ||
                     this.PEditAuthors.Equals(input.PEditAuthors)
-                ) && 
+                ) &&
                 (
                     this.PEditPublishers == input.PEditPublishers ||
                     this.PEditPublishers.Equals(input.PEditPublishers)
-                ) && 
+                ) &&
                 (
                     this.PEditPartialUsers == input.PEditPartialUsers ||
                     this.PEditPartialUsers.Equals(input.PEditPartialUsers)
@@ -325,5 +319,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

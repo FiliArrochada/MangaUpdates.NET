@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -175,51 +170,51 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.ForumId == input.ForumId ||
                     this.ForumId.Equals(input.ForumId)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Position == input.Position ||
                     this.Position.Equals(input.Position)
-                ) && 
+                ) &&
                 (
                     this.Moderators == input.Moderators ||
                     this.Moderators != null &&
                     input.Moderators != null &&
                     this.Moderators.SequenceEqual(input.Moderators)
-                ) && 
+                ) &&
                 (
                     this.Series == input.Series ||
                     (this.Series != null &&
                     this.Series.Equals(input.Series))
-                ) && 
+                ) &&
                 (
                     this.Stats == input.Stats ||
                     (this.Stats != null &&
                     this.Stats.Equals(input.Stats))
-                ) && 
+                ) &&
                 (
                     this.LastTopic == input.LastTopic ||
                     (this.LastTopic != null &&
                     this.LastTopic.Equals(input.LastTopic))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -284,5 +279,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

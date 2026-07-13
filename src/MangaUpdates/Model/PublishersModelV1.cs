@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -115,9 +110,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Spanish")]
             Spanish = 14
-
         }
-
 
         /// <summary>
         /// Gets or Sets Type
@@ -125,6 +118,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("type")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PublishersModelV1" /> class.
         /// </summary>
@@ -277,56 +271,56 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.PublisherId == input.PublisherId ||
                     this.PublisherId.Equals(input.PublisherId)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Associated == input.Associated ||
                     this.Associated != null &&
                     input.Associated != null &&
                     this.Associated.SequenceEqual(input.Associated)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Info == input.Info ||
                     (this.Info != null &&
                     this.Info.Equals(input.Info))
-                ) && 
+                ) &&
                 (
                     this.Site == input.Site ||
                     (this.Site != null &&
                     this.Site.Equals(input.Site))
-                ) && 
+                ) &&
                 (
                     this.Stats == input.Stats ||
                     (this.Stats != null &&
                     this.Stats.Equals(input.Stats))
-                ) && 
+                ) &&
                 (
                     this.AddedBy == input.AddedBy ||
                     (this.AddedBy != null &&
                     this.AddedBy.Equals(input.AddedBy))
-                ) && 
+                ) &&
                 (
                     this.LastUpdated == input.LastUpdated ||
                     (this.LastUpdated != null &&
                     this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -395,5 +389,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

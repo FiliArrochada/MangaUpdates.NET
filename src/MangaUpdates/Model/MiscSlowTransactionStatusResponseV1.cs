@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -55,9 +49,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "error")]
             Error = 4
-
         }
-
 
         /// <summary>
         /// Gets or Sets State
@@ -65,6 +57,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("state")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public StateEnum? State { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MiscSlowTransactionStatusResponseV1" /> class.
         /// </summary>
@@ -167,28 +160,28 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.State == input.State ||
                     this.State.Equals(input.State)
-                ) && 
+                ) &&
                 (
                     this.Error == input.Error ||
                     (this.Error != null &&
                     this.Error.Equals(input.Error))
-                ) && 
+                ) &&
                 (
                     this.Percent == input.Percent ||
                     this.Percent.Equals(input.Percent)
-                ) && 
+                ) &&
                 (
                     this.Done == input.Done ||
                     this.Done.Equals(input.Done)
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     this.Total.Equals(input.Total)
-                ) && 
+                ) &&
                 (
                     this.Return == input.Return ||
                     (this.Return != null &&
@@ -231,5 +224,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

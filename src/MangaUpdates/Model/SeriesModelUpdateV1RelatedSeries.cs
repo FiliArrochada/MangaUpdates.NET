@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -73,20 +67,21 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Main Story")]
             MainStory = 7
-
         }
-
 
         /// <summary>
         /// Gets or Sets RelationType
         /// </summary>
         [JsonPropertyName("relation_type")]
         public RelationTypeEnum RelationType { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelUpdateV1RelatedSeries" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SeriesModelUpdateV1RelatedSeries() { }
+        protected SeriesModelUpdateV1RelatedSeries()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelUpdateV1RelatedSeries" /> class.
         /// </summary>
@@ -148,11 +143,11 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.RelationType == input.RelationType ||
                     this.RelationType.Equals(input.RelationType)
-                ) && 
+                ) &&
                 (
                     this.RelatedSeriesId == input.RelatedSeriesId ||
                     this.RelatedSeriesId.Equals(input.RelatedSeriesId)
@@ -184,5 +179,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

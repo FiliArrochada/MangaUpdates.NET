@@ -32,10 +32,6 @@ namespace MangaUpdates.Api
         [Post("/members/{id}/genre/{genre_id}/highlight")]
         Task<ApiResponseV1> AddMemberGenreHighlight(long id, [AliasAs("genre_id")] long genreId, [Body] UserGenreHighlightModelUpdateV1 userGenreHighlightModelUpdateV1, CancellationToken cancellationToken = default);
 
-        /// <summary>add or update a user group</summary>
-        [Put("/membergroups/{id}")]
-        Task<ApiResponseV1> AddOrUpdateUserGroup(string id, [Body] UserGroupModelUpdateV1 userGroupModelUpdateV1, CancellationToken cancellationToken = default);
-
         /// <summary>filter a group for a user</summary>
         [Post("/members/{id}/group/{group_id}/filter")]
         Task<ApiResponseV1> AddUserGroupFilter(long id, [AliasAs("group_id")] long groupId, CancellationToken cancellationToken = default);
@@ -60,9 +56,13 @@ namespace MangaUpdates.Api
         [Delete("/members/{id}/requests/{request_id}")]
         Task<ApiResponseV1> DeleteMemberChangeRequest(long id, [AliasAs("request_id")] long requestId, CancellationToken cancellationToken = default);
 
-        /// <summary>delete a user group</summary>
-        [Delete("/membergroups/{id}")]
-        Task<ApiResponseV1> DeleteUserGroup(string id, CancellationToken cancellationToken = default);
+        /// <summary>delete all a members sessions</summary>
+        [Delete("/members/{id}/sessions")]
+        Task<ApiResponseV1> DeleteMemberSessions(long id, CancellationToken cancellationToken = default);
+
+        /// <summary>mark notifications as read for a specific user</summary>
+        [Post("/members/{id}/notifications/mark-read")]
+        Task<MemberNotificationMarkReadResponseV1> MarkMemberNotificationsRead(long id, [Body] MemberNotificationMarkReadRequestV1 memberNotificationMarkReadRequestV1, CancellationToken cancellationToken = default);
 
         /// <summary>reject a member upgrade</summary>
         [Post("/members/{id}/upgrade/reject")]
@@ -112,6 +112,18 @@ namespace MangaUpdates.Api
         [Get("/members/{id}/group/filters")]
         Task<List<UserGroupFilterModelV1>> RetrieveMemberGroupFilters(long id, CancellationToken cancellationToken = default);
 
+        /// <summary>get notification preferences for a specific user</summary>
+        [Get("/members/{id}/notification-preferences")]
+        Task<List<UserNotificationPreferenceModelV1>> RetrieveMemberNotificationPreferences(long id, CancellationToken cancellationToken = default);
+
+        /// <summary>get unread notification count for a specific user</summary>
+        [Get("/members/{id}/notifications/unread-count")]
+        Task<MemberNotificationUnreadCountV1> RetrieveMemberNotificationUnreadCount(long id, CancellationToken cancellationToken = default);
+
+        /// <summary>get notifications for a specific user</summary>
+        [Get("/members/{id}/notifications")]
+        Task<List<UserNotificationModelV1>> RetrieveMemberNotifications(long id, [Query] [AliasAs("unread_only")] bool? unreadOnly = default, [Query] int? limit = default, [Query] int? offset = default, CancellationToken cancellationToken = default);
+
         /// <summary>get a subscription to a specific topic for a user</summary>
         [Get("/members/{id}/topics/{topic_id}")]
         Task<UserSubscribedTopicModelV1> RetrieveMemberTopicSubscription(long id, [AliasAs("topic_id")] long topicId, CancellationToken cancellationToken = default);
@@ -120,13 +132,9 @@ namespace MangaUpdates.Api
         [Get("/members/{id}/topics")]
         Task<List<UserSubscribedTopicModelV1>> RetrieveMemberTopicSubscriptions(long id, CancellationToken cancellationToken = default);
 
-        /// <summary>get user group</summary>
-        [Get("/membergroups/{id}")]
-        Task<UserGroupModelV1> RetrieveUserGroupById(string id, [Query] bool? unrenderedFields = default, CancellationToken cancellationToken = default);
-
-        /// <summary>get user groups</summary>
-        [Get("/membergroups")]
-        Task<List<UserGroupModelV1>> RetrieveUserGroups(CancellationToken cancellationToken = default);
+        /// <summary>get a specific member sessions if they exists</summary>
+        [Get("/members/{id}/sessions")]
+        Task<UserSessionResponseV1> RetrieveSessions(long id, CancellationToken cancellationToken = default);
 
         /// <summary>search change requests for a specific user</summary>
         [Get("/members/{id}/requests")]
@@ -143,5 +151,9 @@ namespace MangaUpdates.Api
         /// <summary>update a change request</summary>
         [Patch("/members/{id}/requests/{request_id}")]
         Task<ApiResponseV1> UpdateMemberChangeRequest(long id, [AliasAs("request_id")] long requestId, [Body] UserChangeRequestModelUpdateV1 userChangeRequestModelUpdateV1, CancellationToken cancellationToken = default);
+
+        /// <summary>update all notification preferences for a specific user</summary>
+        [Put("/members/{id}/notification-preferences")]
+        Task<ApiResponseV1> UpdateMemberNotificationPreferences(long id, [Body] List<UserNotificationPreferenceUpdateModelV1> userNotificationPreferenceUpdateModelV1, CancellationToken cancellationToken = default);
     }
 }

@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -61,9 +55,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "hold")]
             Hold = 5
-
         }
-
 
         /// <summary>
         /// Gets or Sets Type
@@ -71,6 +63,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("type")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsModelV1" /> class.
         /// </summary>
@@ -182,34 +175,34 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.ListId == input.ListId ||
                     this.ListId.Equals(input.ListId)
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Icon == input.Icon ||
                     (this.Icon != null &&
                     this.Icon.Equals(input.Icon))
-                ) && 
+                ) &&
                 (
                     this.Custom == input.Custom ||
                     this.Custom.Equals(input.Custom)
-                ) && 
+                ) &&
                 (
                     this.Options == input.Options ||
                     (this.Options != null &&
@@ -259,5 +252,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

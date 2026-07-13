@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -43,9 +38,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "description")]
             Description = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Stype
@@ -53,6 +46,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("stype")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public StypeEnum? Stype { get; set; }
+
         /// <summary>
         /// Defines Licensed
         /// </summary>
@@ -70,9 +64,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "no")]
             No = 2
-
         }
-
 
         /// <summary>
         /// Gets or Sets Licensed
@@ -80,6 +72,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("licensed")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public LicensedEnum? Licensed { get; set; }
+
         /// <summary>
         /// Defines Filter
         /// </summary>
@@ -121,9 +114,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "no_releases")]
             NoReleases = 6
-
         }
-
 
         /// <summary>
         /// Gets or Sets Filter
@@ -131,6 +122,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("filter")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public FilterEnum? Filter { get; set; }
+
         /// <summary>
         /// Defines Orderby
         /// </summary>
@@ -226,9 +218,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "list_unfinished")]
             ListUnfinished = 15
-
         }
-
 
         /// <summary>
         /// Gets or Sets Orderby
@@ -236,6 +226,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("orderby")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OrderbyEnum? Orderby { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesSearchRequestV1" /> class.
         /// </summary>
@@ -444,93 +435,93 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Search == input.Search ||
                     (this.Search != null &&
                     this.Search.Equals(input.Search))
-                ) && 
+                ) &&
                 (
                     this.AddedBy == input.AddedBy ||
                     this.AddedBy.Equals(input.AddedBy)
-                ) && 
+                ) &&
                 (
                     this.Stype == input.Stype ||
                     this.Stype.Equals(input.Stype)
-                ) && 
+                ) &&
                 (
                     this.Licensed == input.Licensed ||
                     this.Licensed.Equals(input.Licensed)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type != null &&
                     input.Type != null &&
                     this.Type.SequenceEqual(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Year == input.Year ||
                     (this.Year != null &&
                     this.Year.Equals(input.Year))
-                ) && 
+                ) &&
                 (
                     this.FilterTypes == input.FilterTypes ||
                     this.FilterTypes != null &&
                     input.FilterTypes != null &&
                     this.FilterTypes.SequenceEqual(input.FilterTypes)
-                ) && 
+                ) &&
                 (
                     this.Category == input.Category ||
                     this.Category != null &&
                     input.Category != null &&
                     this.Category.SequenceEqual(input.Category)
-                ) && 
+                ) &&
                 (
                     this.Filter == input.Filter ||
                     this.Filter.Equals(input.Filter)
-                ) && 
+                ) &&
                 (
                     this.List == input.List ||
                     (this.List != null &&
                     this.List.Equals(input.List))
-                ) && 
+                ) &&
                 (
                     this.Page == input.Page ||
                     this.Page.Equals(input.Page)
-                ) && 
+                ) &&
                 (
                     this.Perpage == input.Perpage ||
                     this.Perpage.Equals(input.Perpage)
-                ) && 
+                ) &&
                 (
                     this.Letter == input.Letter ||
                     (this.Letter != null &&
                     this.Letter.Equals(input.Letter))
-                ) && 
+                ) &&
                 (
                     this.Genre == input.Genre ||
                     this.Genre != null &&
                     input.Genre != null &&
                     this.Genre.SequenceEqual(input.Genre)
-                ) && 
+                ) &&
                 (
                     this.ExcludeGenre == input.ExcludeGenre ||
                     this.ExcludeGenre != null &&
                     input.ExcludeGenre != null &&
                     this.ExcludeGenre.SequenceEqual(input.ExcludeGenre)
-                ) && 
+                ) &&
                 (
                     this.Orderby == input.Orderby ||
                     this.Orderby.Equals(input.Orderby)
-                ) && 
+                ) &&
                 (
                     this.Pending == input.Pending ||
                     this.Pending.Equals(input.Pending)
-                ) && 
+                ) &&
                 (
                     this.IncludeRankMetadata == input.IncludeRankMetadata ||
                     this.IncludeRankMetadata.Equals(input.IncludeRankMetadata)
-                ) && 
+                ) &&
                 (
                     this.ExcludeFilteredGenres == input.ExcludeFilteredGenres ||
                     this.ExcludeFilteredGenres.Equals(input.ExcludeFilteredGenres)
@@ -606,5 +597,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

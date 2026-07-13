@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -73,9 +67,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "userrating")]
             Userrating = 7
-
         }
-
 
         /// <summary>
         /// Gets or Sets Sort
@@ -83,6 +75,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("sort")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SortEnum? Sort { get; set; }
+
         /// <summary>
         /// Defines ShowComment
         /// </summary>
@@ -106,9 +99,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "none")]
             None = 3
-
         }
-
 
         /// <summary>
         /// Gets or Sets ShowComment
@@ -116,6 +107,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("show_comment")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ShowCommentEnum? ShowComment { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsModelV1Options" /> class.
         /// </summary>
@@ -217,31 +209,31 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Public == input.Public ||
                     this.Public.Equals(input.Public)
-                ) && 
+                ) &&
                 (
                     this.Sort == input.Sort ||
                     this.Sort.Equals(input.Sort)
-                ) && 
+                ) &&
                 (
                     this.ShowRating == input.ShowRating ||
                     this.ShowRating.Equals(input.ShowRating)
-                ) && 
+                ) &&
                 (
                     this.ShowStatus == input.ShowStatus ||
                     this.ShowStatus.Equals(input.ShowStatus)
-                ) && 
+                ) &&
                 (
                     this.ShowComment == input.ShowComment ||
                     this.ShowComment.Equals(input.ShowComment)
-                ) && 
+                ) &&
                 (
                     this.ShowPerPage == input.ShowPerPage ||
                     this.ShowPerPage.Equals(input.ShowPerPage)
-                ) && 
+                ) &&
                 (
                     this.ShowLatestChapter == input.ShowLatestChapter ||
                     this.ShowLatestChapter.Equals(input.ShowLatestChapter)
@@ -278,5 +270,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

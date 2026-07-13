@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -135,32 +129,32 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Releases == input.Releases ||
                     (this.Releases != null &&
                     this.Releases.Equals(input.Releases))
-                ) && 
+                ) &&
                 (
                     this.Series == input.Series ||
                     (this.Series != null &&
                     this.Series.Equals(input.Series))
-                ) && 
+                ) &&
                 (
                     this.Publishers == input.Publishers ||
                     (this.Publishers != null &&
                     this.Publishers.Equals(input.Publishers))
-                ) && 
+                ) &&
                 (
                     this.Groups == input.Groups ||
                     (this.Groups != null &&
                     this.Groups.Equals(input.Groups))
-                ) && 
+                ) &&
                 (
                     this.Authors == input.Authors ||
                     (this.Authors != null &&
                     this.Authors.Equals(input.Authors))
-                ) && 
+                ) &&
                 (
                     this.LastAction == input.LastAction ||
                     (this.LastAction != null &&
@@ -215,5 +209,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

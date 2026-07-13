@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +24,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="UserGroupModelV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UserGroupModelV1() { }
+        protected UserGroupModelV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UserGroupModelV1" /> class.
         /// </summary>
@@ -118,17 +114,17 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
@@ -171,5 +167,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

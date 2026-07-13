@@ -22,6 +22,10 @@ namespace MangaUpdates.Api
         [Post("/account/delete/confirm/{auth_hash}")]
         Task<ApiResponseV1> ConfirmDeleteAccount([AliasAs("auth_hash")] string authHash, CancellationToken cancellationToken = default);
 
+        /// <summary>confirm and execute unsubscribe (no auth required)</summary>
+        [Post("/account/notifications/unsubscribe/{token}")]
+        Task<ApiResponseV1> ConfirmNotificationUnsubscribe(string token, CancellationToken cancellationToken = default);
+
         /// <summary>confirm a new member registration</summary>
         [Post("/account/register/confirm/{auth_hash}")]
         Task<ApiResponseV1> ConfirmRegistration([AliasAs("auth_hash")] string authHash, CancellationToken cancellationToken = default);
@@ -38,13 +42,25 @@ namespace MangaUpdates.Api
         [Put("/account/login")]
         Task<ApiResponseV1> Login([Body] AccountLoginModelV1 accountLoginModelV1, CancellationToken cancellationToken = default);
 
+        /// <summary>create a session token as a cookie</summary>
+        [Put("/account/loginWithCookie")]
+        Task<ApiResponseV1> LoginWithCookie([Body] AccountLoginModelV1 accountLoginModelV1, CancellationToken cancellationToken = default);
+
         /// <summary>remove a session token</summary>
         [Post("/account/logout")]
         Task<ApiResponseV1> Logout(CancellationToken cancellationToken = default);
 
+        /// <summary>preview what will be unsubscribed (no auth required)</summary>
+        [Get("/account/notifications/unsubscribe/{token}")]
+        Task<AccountNotificationUnsubscribePreviewV1> PreviewNotificationUnsubscribe(string token, CancellationToken cancellationToken = default);
+
         /// <summary>get the profile for the current user</summary>
         [Get("/account/profile")]
         Task<UserModelV1> Profile(CancellationToken cancellationToken = default);
+
+        /// <summary>refresh session token cookie</summary>
+        [Get("/account/refresh")]
+        Task<ApiResponseV1> RefreshCookie(CancellationToken cancellationToken = default);
 
         /// <summary>register a new member</summary>
         [Post("/account/register/{captcha_response}")]

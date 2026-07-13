@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -30,7 +25,9 @@ namespace MangaUpdates.Model
         /// Initializes a new instance of the <see cref="FaqCategoryReorderModelV1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected FaqCategoryReorderModelV1() { }
+        protected FaqCategoryReorderModelV1()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FaqCategoryReorderModelV1" /> class.
         /// </summary>
@@ -109,15 +106,15 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.CategoryId == input.CategoryId ||
                     this.CategoryId.Equals(input.CategoryId)
-                ) && 
+                ) &&
                 (
                     this.Position == input.Position ||
                     this.Position.Equals(input.Position)
-                ) && 
+                ) &&
                 (
                     this.Questions == input.Questions ||
                     this.Questions != null &&
@@ -155,5 +152,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

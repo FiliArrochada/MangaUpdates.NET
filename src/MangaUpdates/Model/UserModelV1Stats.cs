@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -185,47 +179,47 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.ForumPosts == input.ForumPosts ||
                     this.ForumPosts.Equals(input.ForumPosts)
-                ) && 
+                ) &&
                 (
                     this.AddedAuthors == input.AddedAuthors ||
                     this.AddedAuthors.Equals(input.AddedAuthors)
-                ) && 
+                ) &&
                 (
                     this.AddedGroups == input.AddedGroups ||
                     this.AddedGroups.Equals(input.AddedGroups)
-                ) && 
+                ) &&
                 (
                     this.AddedPublishers == input.AddedPublishers ||
                     this.AddedPublishers.Equals(input.AddedPublishers)
-                ) && 
+                ) &&
                 (
                     this.AddedReleases == input.AddedReleases ||
                     this.AddedReleases.Equals(input.AddedReleases)
-                ) && 
+                ) &&
                 (
                     this.AddedSeries == input.AddedSeries ||
                     this.AddedSeries.Equals(input.AddedSeries)
-                ) && 
+                ) &&
                 (
                     this.SeriesEdits == input.SeriesEdits ||
                     this.SeriesEdits.Equals(input.SeriesEdits)
-                ) && 
+                ) &&
                 (
                     this.AuthorEdits == input.AuthorEdits ||
                     this.AuthorEdits.Equals(input.AuthorEdits)
-                ) && 
+                ) &&
                 (
                     this.PublisherEdits == input.PublisherEdits ||
                     this.PublisherEdits.Equals(input.PublisherEdits)
-                ) && 
+                ) &&
                 (
                     this.AddedTags == input.AddedTags ||
                     this.AddedTags.Equals(input.AddedTags)
-                ) && 
+                ) &&
                 (
                     this.Moderation == input.Moderation ||
                     (this.Moderation != null &&
@@ -270,5 +264,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

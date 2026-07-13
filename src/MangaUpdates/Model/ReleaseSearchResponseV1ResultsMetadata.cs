@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -135,35 +130,35 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Series == input.Series ||
                     (this.Series != null &&
                     this.Series.Equals(input.Series))
-                ) && 
+                ) &&
                 (
                     this.UserList == input.UserList ||
                     (this.UserList != null &&
                     this.UserList.Equals(input.UserList))
-                ) && 
+                ) &&
                 (
                     this.UserGenreHighlights == input.UserGenreHighlights ||
                     this.UserGenreHighlights != null &&
                     input.UserGenreHighlights != null &&
                     this.UserGenreHighlights.SequenceEqual(input.UserGenreHighlights)
-                ) && 
+                ) &&
                 (
                     this.UserGenreFilters == input.UserGenreFilters ||
                     this.UserGenreFilters != null &&
                     input.UserGenreFilters != null &&
                     this.UserGenreFilters.SequenceEqual(input.UserGenreFilters)
-                ) && 
+                ) &&
                 (
                     this.UserGroupFilters == input.UserGroupFilters ||
                     this.UserGroupFilters != null &&
                     input.UserGroupFilters != null &&
                     this.UserGroupFilters.SequenceEqual(input.UserGroupFilters)
-                ) && 
+                ) &&
                 (
                     this.TypeFilter == input.TypeFilter ||
                     (this.TypeFilter != null &&
@@ -218,5 +213,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

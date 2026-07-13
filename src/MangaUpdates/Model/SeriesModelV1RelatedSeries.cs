@@ -5,18 +5,12 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -73,20 +67,21 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Main Story")]
             MainStory = 7
-
         }
-
 
         /// <summary>
         /// Gets or Sets RelationType
         /// </summary>
         [JsonPropertyName("relation_type")]
         public RelationTypeEnum RelationType { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelV1RelatedSeries" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SeriesModelV1RelatedSeries() { }
+        protected SeriesModelV1RelatedSeries()
+        { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelV1RelatedSeries" /> class.
         /// </summary>
@@ -178,24 +173,24 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.RelationId == input.RelationId ||
                     this.RelationId.Equals(input.RelationId)
-                ) && 
+                ) &&
                 (
                     this.RelationType == input.RelationType ||
                     this.RelationType.Equals(input.RelationType)
-                ) && 
+                ) &&
                 (
                     this.RelatedSeriesId == input.RelatedSeriesId ||
                     this.RelatedSeriesId.Equals(input.RelatedSeriesId)
-                ) && 
+                ) &&
                 (
                     this.RelatedSeriesName == input.RelatedSeriesName ||
                     (this.RelatedSeriesName != null &&
                     this.RelatedSeriesName.Equals(input.RelatedSeriesName))
-                ) && 
+                ) &&
                 (
                     this.TriggeredByRelationId == input.TriggeredByRelationId ||
                     this.TriggeredByRelationId.Equals(input.TriggeredByRelationId)
@@ -233,5 +228,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

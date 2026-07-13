@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -127,7 +122,6 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Spanish")]
             Spanish = 16
-
         }
 
         /// <summary>
@@ -245,34 +239,34 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.PerPage == input.PerPage ||
                     this.PerPage.Equals(input.PerPage)
-                ) && 
+                ) &&
                 (
                     this.Invisible == input.Invisible ||
                     this.Invisible.Equals(input.Invisible)
-                ) && 
+                ) &&
                 (
                     this.HideBirthday == input.HideBirthday ||
                     this.HideBirthday.Equals(input.HideBirthday)
-                ) && 
+                ) &&
                 (
                     this.HideCategories == input.HideCategories ||
                     this.HideCategories.Equals(input.HideCategories)
-                ) && 
+                ) &&
                 (
                     this.FilterTypes == input.FilterTypes ||
                     this.FilterTypes != null &&
                     input.FilterTypes != null &&
                     this.FilterTypes.SequenceEqual(input.FilterTypes)
-                ) && 
+                ) &&
                 (
                     this.Upgrade == input.Upgrade ||
                     (this.Upgrade != null &&
                     this.Upgrade.Equals(input.Upgrade))
-                ) && 
+                ) &&
                 (
                     this.Age18Verified == input.Age18Verified ||
                     this.Age18Verified.Equals(input.Age18Verified)
@@ -315,5 +309,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

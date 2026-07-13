@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -127,9 +122,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "Spanish")]
             Spanish = 16
-
         }
-
 
         /// <summary>
         /// Gets or Sets Type
@@ -137,6 +130,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("type")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TypeEnum? Type { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesModelV1" /> class.
         /// </summary>
@@ -447,138 +441,138 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.SeriesId == input.SeriesId ||
                     this.SeriesId.Equals(input.SeriesId)
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Associated == input.Associated ||
                     this.Associated != null &&
                     input.Associated != null &&
                     this.Associated.SequenceEqual(input.Associated)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Year == input.Year ||
                     (this.Year != null &&
                     this.Year.Equals(input.Year))
-                ) && 
+                ) &&
                 (
                     this.BayesianRating == input.BayesianRating ||
                     this.BayesianRating.Equals(input.BayesianRating)
-                ) && 
+                ) &&
                 (
                     this.RatingVotes == input.RatingVotes ||
                     this.RatingVotes.Equals(input.RatingVotes)
-                ) && 
+                ) &&
                 (
                     this.Genres == input.Genres ||
                     this.Genres != null &&
                     input.Genres != null &&
                     this.Genres.SequenceEqual(input.Genres)
-                ) && 
+                ) &&
                 (
                     this.Categories == input.Categories ||
                     this.Categories != null &&
                     input.Categories != null &&
                     this.Categories.SequenceEqual(input.Categories)
-                ) && 
+                ) &&
                 (
                     this.LatestChapter == input.LatestChapter ||
                     this.LatestChapter.Equals(input.LatestChapter)
-                ) && 
+                ) &&
                 (
                     this.ForumId == input.ForumId ||
                     this.ForumId.Equals(input.ForumId)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Licensed == input.Licensed ||
                     this.Licensed.Equals(input.Licensed)
-                ) && 
+                ) &&
                 (
                     this.Completed == input.Completed ||
                     this.Completed.Equals(input.Completed)
-                ) && 
+                ) &&
                 (
                     this.Anime == input.Anime ||
                     (this.Anime != null &&
                     this.Anime.Equals(input.Anime))
-                ) && 
+                ) &&
                 (
                     this.RelatedSeries == input.RelatedSeries ||
                     this.RelatedSeries != null &&
                     input.RelatedSeries != null &&
                     this.RelatedSeries.SequenceEqual(input.RelatedSeries)
-                ) && 
+                ) &&
                 (
                     this.Authors == input.Authors ||
                     this.Authors != null &&
                     input.Authors != null &&
                     this.Authors.SequenceEqual(input.Authors)
-                ) && 
+                ) &&
                 (
                     this.Publishers == input.Publishers ||
                     this.Publishers != null &&
                     input.Publishers != null &&
                     this.Publishers.SequenceEqual(input.Publishers)
-                ) && 
+                ) &&
                 (
                     this.Publications == input.Publications ||
                     this.Publications != null &&
                     input.Publications != null &&
                     this.Publications.SequenceEqual(input.Publications)
-                ) && 
+                ) &&
                 (
                     this.Recommendations == input.Recommendations ||
                     this.Recommendations != null &&
                     input.Recommendations != null &&
                     this.Recommendations.SequenceEqual(input.Recommendations)
-                ) && 
+                ) &&
                 (
                     this.CategoryRecommendations == input.CategoryRecommendations ||
                     this.CategoryRecommendations != null &&
                     input.CategoryRecommendations != null &&
                     this.CategoryRecommendations.SequenceEqual(input.CategoryRecommendations)
-                ) && 
+                ) &&
                 (
                     this.Rank == input.Rank ||
                     (this.Rank != null &&
                     this.Rank.Equals(input.Rank))
-                ) && 
+                ) &&
                 (
                     this.LastUpdated == input.LastUpdated ||
                     (this.LastUpdated != null &&
                     this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
+                ) &&
                 (
                     this.Admin == input.Admin ||
                     (this.Admin != null &&
@@ -693,5 +687,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }

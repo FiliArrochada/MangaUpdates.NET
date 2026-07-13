@@ -5,18 +5,13 @@
  *
  */
 
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MangaUpdates.Model
 {
@@ -49,9 +44,7 @@ namespace MangaUpdates.Model
             /// </summary>
             [EnumMember(Value = "score")]
             Score = 3
-
         }
-
 
         /// <summary>
         /// Gets or Sets Orderby
@@ -59,6 +52,7 @@ namespace MangaUpdates.Model
         [JsonPropertyName("orderby")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OrderbyEnum? Orderby { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorsSearchRequestV1" /> class.
         /// </summary>
@@ -180,39 +174,39 @@ namespace MangaUpdates.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Search == input.Search ||
                     (this.Search != null &&
                     this.Search.Equals(input.Search))
-                ) && 
+                ) &&
                 (
                     this.AddedBy == input.AddedBy ||
                     this.AddedBy.Equals(input.AddedBy)
-                ) && 
+                ) &&
                 (
                     this.Page == input.Page ||
                     this.Page.Equals(input.Page)
-                ) && 
+                ) &&
                 (
                     this.Perpage == input.Perpage ||
                     this.Perpage.Equals(input.Perpage)
-                ) && 
+                ) &&
                 (
                     this.Letter == input.Letter ||
                     (this.Letter != null &&
                     this.Letter.Equals(input.Letter))
-                ) && 
+                ) &&
                 (
                     this.Genre == input.Genre ||
                     this.Genre != null &&
                     input.Genre != null &&
                     this.Genre.SequenceEqual(input.Genre)
-                ) && 
+                ) &&
                 (
                     this.Orderby == input.Orderby ||
                     this.Orderby.Equals(input.Orderby)
-                ) && 
+                ) &&
                 (
                     this.Pending == input.Pending ||
                     this.Pending.Equals(input.Pending)
@@ -259,5 +253,4 @@ namespace MangaUpdates.Model
             yield break;
         }
     }
-
 }
