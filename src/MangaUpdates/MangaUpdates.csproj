@@ -1,38 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <AssemblyName>MangaUpdates</AssemblyName>
-    <PackageId>MangaUpdates</PackageId>
-    <OutputType>Library</OutputType>
-    <Authors>filipe-silva</Authors>
-    <Company>MangaUpdates.NET</Company>
-    <AssemblyTitle>MangaUpdates API client</AssemblyTitle>
-    <Description>A type-safe C# client for the MangaUpdates API, built on Refit.</Description>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RootNamespace>MangaUpdates</RootNamespace>
-    <!-- Package version tracks the API's info.version. The release workflow overrides
-         this at pack time with the value read from api/openapi.yaml, so a published
-         package always matches the API version it targets. -->
-    <Version>1.0.0</Version>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Migrated the client from RestSharp to Refit with System.Text.Json.</PackageReleaseNotes>
-    <Nullable>annotations</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<AssemblyName>MangaUpdates</AssemblyName>
+		<PackageId>MangaUpdates</PackageId>
+		<OutputType>Library</OutputType>
+		<Authors>filipe-silva</Authors>
+		<Company>MangaUpdates.NET</Company>
+		<AssemblyTitle>MangaUpdates API client</AssemblyTitle>
+		<Description>A type-safe C# client for the MangaUpdates API, built on Refit.</Description>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RootNamespace>MangaUpdates</RootNamespace>
+		<!-- Source of truth for the package version; bump it for each release.
+         Track the API's info.version in the first three components; bump the
+         4th (revision) component for client-only fixes against the same API version. -->
+		<Version>1.0.0.0</Version>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageProjectUrl>https://github.com/filipe-silva/MangaUpdates.NET</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>Migrated the client from RestSharp to Refit with System.Text.Json.</PackageReleaseNotes>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Nullable>annotations</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Refit" Version="13.1.0" />
-    <PackageReference Include="Refit.HttpClientFactory" Version="13.1.0" />
-    <PackageReference Include="Polly" Version="8.7.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Refit" Version="13.1.0" />
+		<PackageReference Include="Refit.HttpClientFactory" Version="13.1.0" />
+		<PackageReference Include="Polly" Version="8.7.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <!-- Ship the repo README as the package readme (referenced by PackageReadmeFile above).
+	<ItemGroup>
+		<!-- Ship the repo README as the package readme (referenced by PackageReadmeFile above).
          Path is relative to this project (repo root is two levels up). -->
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>
