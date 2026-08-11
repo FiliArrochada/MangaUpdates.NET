@@ -23,6 +23,12 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeV1" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected TimeV1() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeV1" /> class.
+        /// </summary>
         /// <param name="timestamp">timestamp.</param>
         /// <param name="asRfc3339">asRfc3339.</param>
         /// <param name="asString">asString.</param>

@@ -111,6 +111,14 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListsModelV1Options" /> class.
         /// </summary>
+        // Required for deserialization: the parameterized ctor's "_public" parameter cannot bind
+        // to the "Public" property by name, so STJ must take the parameterless path.
+        [JsonConstructorAttribute]
+        protected ListsModelV1Options() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ListsModelV1Options" /> class.
+        /// </summary>
         /// <param name="_public">_public.</param>
         /// <param name="sort">sort.</param>
         /// <param name="showRating">showRating.</param>

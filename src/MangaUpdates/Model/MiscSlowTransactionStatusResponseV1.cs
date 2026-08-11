@@ -61,6 +61,14 @@ namespace MangaUpdates.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MiscSlowTransactionStatusResponseV1" /> class.
         /// </summary>
+        // Required for deserialization: the parameterized ctor's "_return" parameter cannot bind
+        // to the "Return" property by name, so STJ must take the parameterless path.
+        [JsonConstructorAttribute]
+        protected MiscSlowTransactionStatusResponseV1() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MiscSlowTransactionStatusResponseV1" /> class.
+        /// </summary>
         /// <param name="state">state.</param>
         /// <param name="error">error.</param>
         /// <param name="percent">percent.</param>
