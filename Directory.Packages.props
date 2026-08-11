@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Library -->
+    <PackageVersion Include="Polly" Version="8.7.0" />
+    <PackageVersion Include="Refit" Version="15.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="15.0.0" />
+    <PackageVersion Include="Refit.Reflection" Version="15.0.0" />
+    <!-- Inbox on net10.0; needed as packages for the net48 target -->
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Tests -->
+    <!-- Match the Microsoft.Extensions.* floor pulled in transitively by Refit.HttpClientFactory -->
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+  </ItemGroup>
+</Project>

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -7,28 +7,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{460DE54F-28B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaUpdates", "src\MangaUpdates\MangaUpdates.csproj", "{8230C2E4-9536-4835-AFF0-A6E456B39CD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaUpdates.Test", "tst\MangaUpdates.Test\MangaUpdates.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaUpdates.Test", "src\MangaUpdates.Test\MangaUpdates.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7A096C5F-82BB-4499-806F-FF636A1F7378}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{101A45C5-0BFC-4588-B01A-4B92861806C0}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
+		.github\workflows\spec-drift.yml = .github\workflows\spec-drift.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solution-items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		CLAUDE.md = CLAUDE.md
+		Directory.Packages.props = Directory.Packages.props
 		LICENSE = LICENSE
 		README.md = README.md
+		renovate.json = renovate.json
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tst", "tst", "{51B05FA5-C369-42F7-89D6-908F75B842EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{14E792CD-FBC5-42BC-B69E-0EE469917F60}"
 	ProjectSection(SolutionItems) = preProject
-		api\openapi.yaml = api\openapi.yaml
+		api\openapi-1.0.0.yaml = api\openapi-1.0.0.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{3C9F1B7A-6E2D-4F4B-9A1C-5D8E7F0A2B41}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\check-spec-version.cs = scripts\check-spec-version.cs
 	EndProjectSection
 EndProject
 Global
@@ -51,7 +58,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8230C2E4-9536-4835-AFF0-A6E456B39CD9} = {460DE54F-28BB-4B2C-A6EC-C0ECDD90ECA2}
-		{19F1DEBC-DE5E-4517-8062-F000CD499087} = {51B05FA5-C369-42F7-89D6-908F75B842EF}
+		{19F1DEBC-DE5E-4517-8062-F000CD499087} = {460DE54F-28BB-4B2C-A6EC-C0ECDD90ECA2}
 		{101A45C5-0BFC-4588-B01A-4B92861806C0} = {7A096C5F-82BB-4499-806F-FF636A1F7378}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

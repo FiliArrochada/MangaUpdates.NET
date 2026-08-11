@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net10.0;net48</TargetFrameworks>
 		<AssemblyName>MangaUpdates</AssemblyName>
 		<PackageId>MangaUpdates</PackageId>
 		<OutputType>Library</OutputType>
@@ -14,21 +14,32 @@
 		<!-- Source of truth for the package version; bump it for each release.
          Track the API's info.version in the first three components; bump the
          4th (revision) component for client-only fixes against the same API version. -->
-		<Version>1.0.0.0</Version>
+		<Version>1.0.0.1</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageProjectUrl>https://github.com/filipe-silva/MangaUpdates.NET</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageReleaseNotes>Migrated the client from RestSharp to Refit with System.Text.Json.</PackageReleaseNotes>
+		<PackageReleaseNotes>Refit 15; multi-targets net10.0 and net48. Same MangaUpdates API surface (1.0.0).</PackageReleaseNotes>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>annotations</Nullable>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Refit" Version="13.1.0" />
-		<PackageReference Include="Refit.HttpClientFactory" Version="13.1.0" />
-		<PackageReference Include="Polly" Version="8.7.0" />
+		<!-- Versions are managed centrally in Directory.Packages.props (CPM). -->
+		<PackageReference Include="Refit" />
+		<PackageReference Include="Refit.HttpClientFactory" />
+		<!-- Since Refit 14 the reflection request builder is a separate package; referenced here
+		     so AddRefitClient and consumers' RestService.For<T> keep working. Version-locked to Refit. -->
+		<PackageReference Include="Refit.Reflection" />
+		<PackageReference Include="Polly" />
+		<PackageReference Include="System.Text.Json" />
+		<PackageReference Include="System.ComponentModel.Annotations" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Lets the test project exercise the internal handlers (BearerTokenHandler, RetryHandler). -->
+		<InternalsVisibleTo Include="MangaUpdates.Test" />
 	</ItemGroup>
 
 	<ItemGroup>

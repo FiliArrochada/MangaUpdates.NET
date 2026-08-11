@@ -26,10 +26,13 @@ namespace MangaUpdates.Model
         /// <param name="timestamp">timestamp.</param>
         /// <param name="asRfc3339">asRfc3339.</param>
         /// <param name="asString">asString.</param>
-        public TimeV1(long timestamp = default(long), DateTime asRfc3339 = default(DateTime), string asString = default(string))
+        // asRfc3339 is nullable on purpose: an optional parameter declared `DateTime x = default`
+        // breaks ParameterInfo.HasDefaultValue reflection on .NET Framework (FormatException in
+        // MdConstant.GetValue), which System.Text.Json hits when building this type's metadata.
+        public TimeV1(long timestamp = default(long), DateTime? asRfc3339 = default(DateTime?), string asString = default(string))
         {
             this.Timestamp = timestamp;
-            this.AsRfc3339 = asRfc3339;
+            this.AsRfc3339 = asRfc3339 ?? default(DateTime);
             this.AsString = asString;
         }
 

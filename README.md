@@ -1,6 +1,15 @@
 # MangaUpdates.NET
 
+[![CI](https://github.com/filipe-silva/MangaUpdates.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/filipe-silva/MangaUpdates.NET/actions/workflows/ci.yml)
+[![NuGet](https://img.shields.io/nuget/v/MangaUpdates.svg)](https://www.nuget.org/packages/MangaUpdates/)
+
 A type-safe C# client for the [MangaUpdates API](https://api.mangaupdates.com/), built on [Refit](https://github.com/reactiveui/refit) and `System.Text.Json`.
+
+This SDK is hand-maintained and kept in sync with the MangaUpdates OpenAPI specification manually — updates are applied directly to the interface and model source.
+
+- API version: 1.0.0
+- SDK version: 1.0.0.1 (tracks the API version; the 4th revision component denotes client-only changes)
+- Source specification: [api/openapi-1.0.0.yaml](api/openapi-1.0.0.yaml) (one file per API version, kept as history)
 
 Most API functions are public and do not require an account. User-based functions require a bearer token; account registration must be done through the MangaUpdates website.
 
@@ -10,7 +19,7 @@ Most API functions are public and do not require an account. User-based function
 dotnet add package MangaUpdates
 ```
 
-Targets `net8.0`.
+Multi-targets `net10.0` and `net48` (classic .NET Framework).
 
 ## Usage
 

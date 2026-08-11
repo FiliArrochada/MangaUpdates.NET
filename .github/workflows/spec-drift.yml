@@ -1,0 +1,76 @@
+name: Spec drift check
+
+# Weekly check that the vendored MangaUpdates OpenAPI spec (api/openapi-<version>.yaml, highest
+# version = current) still matches what MangaUpdates publishes upstream. On drift it opens (or
+# comments on) an issue labeled 'spec-drift'; when the drift is resolved it closes the issue.
+#
+# The checker is scripts/check-spec-version.cs, a .NET 10 file-based app.
+# Exit codes: 0 = up to date, 1 = drift, 2 = could not complete (fails this job).
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10 (file-based apps)
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Check spec drift
+        id: check
+        run: |
+          set +e
+          dotnet run scripts/check-spec-version.cs -- --diff | tee drift-report.txt
+          code=${PIPESTATUS[0]}
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          # 2 = network/parse failure: fail loudly so the run shows red instead of silently passing.
+          if [ "$code" -eq 2 ]; then exit 2; fi
+
+      - name: Open, update, or close drift issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --label spec-drift --state open \
+            --json number --jq '.[0].number // empty' || true)
+
+          if [ "${{ steps.check.outputs.exit_code }}" = "1" ]; then
+            {
+              echo "The upstream MangaUpdates API spec no longer matches \`api/\` (checked $(date -u +%F))."
+              echo
+              echo '```'
+              cat drift-report.txt
+              echo '```'
+              echo
+              echo "To update the client:"
+              echo "1. Download the new spec from https://api.mangaupdates.com/openapi.yaml"
+              echo "2. Save it as \`api/openapi-<new version>.yaml\` (keep the old file — api/ is the version history)"
+              echo "3. Apply the interface/model changes by hand (see CLAUDE.md) and bump \`<Version>\` in MangaUpdates.csproj"
+            } > issue-body.md
+
+            if [ -n "$existing" ]; then
+              gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body-file issue-body.md
+            else
+              gh label create spec-drift --repo "$GITHUB_REPOSITORY" \
+                --description "Upstream MangaUpdates API spec has drifted from api/" \
+                --color D93F0B 2>/dev/null || true
+              gh issue create --repo "$GITHUB_REPOSITORY" \
+                --title "MangaUpdates API spec drift detected" \
+                --label spec-drift --body-file issue-body.md
+            fi
+          elif [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" \
+              --comment "Local spec matches upstream again — closing."
+          fi

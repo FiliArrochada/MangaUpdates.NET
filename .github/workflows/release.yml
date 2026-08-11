@@ -1,51 +1,79 @@
 name: Release to NuGet
 
+# Publishes the MangaUpdates package to nuget.org.
+#
+# The package version is always the <Version> from MangaUpdates.csproj — bump it there before
+# releasing. Manual trigger only (workflow_dispatch): run it from the Actions tab. After a
+# successful push it creates the matching v<version> GitHub release/tag (if it doesn't already
+# exist), so the release history stays in sync with nuget.org.
+#
+# Publishing uses nuget.org Trusted Publishing (OIDC) — no long-lived API key.
+# nuget.org side: a Trusted Publishing policy under the profile with
+#   Repository Owner: filipe-silva
+#   Repository: MangaUpdates.NET
+#   Workflow File: release.yml
+# GitHub side: the only secret needed is NUGET_USER = the nuget.org profile name (NOT the email).
+# The job requests a short-lived key at run time.
+
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # write: creates the v<version> release/tag after publishing
+  id-token: write   # required for Trusted Publishing: lets the job request a GitHub OIDC token
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    permissions:
-      contents: read
-      id-token: write   # required for NuGet trusted publishing (OIDC token issuance)
-
+  release:
+    # windows-latest: the library multi-targets net10.0;net48, and the net48
+    # build/tests need the .NET Framework targeting pack + runtime.
+    runs-on: windows-latest
+    timeout-minutes: 15
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
 
-    - name: Restore
-      run: dotnet restore
+      - name: Restore
+        run: dotnet restore MangaUpdates.sln
 
-    - name: Build
-      run: dotnet build -c Release --no-restore
+      - name: Build
+        run: dotnet build MangaUpdates.sln -c Release --no-restore
 
-    - name: Test
-      run: dotnet test -c Release --no-build
+      - name: Test
+        run: dotnet test MangaUpdates.sln -c Release --no-build
 
-    - name: Pack
-      run: dotnet pack src/MangaUpdates/MangaUpdates.csproj -c Release --no-build -o artifacts
+      - name: Pack
+        run: dotnet pack src/MangaUpdates/MangaUpdates.csproj -c Release --no-build -o artifacts
 
-    # --- Trusted publishing: exchange the GitHub OIDC token for a short-lived NuGet API key ---
-    # Prerequisite: configure a Trusted Publishing policy on nuget.org (Account > Trusted Publishing)
-    # for owner "filipe-silva", repo "MangaUpdates.NET", workflow file "release.yml".
-    - name: NuGet login (OIDC -> temporary API key)
-      id: login
-      uses: NuGet/login@v1
-      with:
-        user: ${{ secrets.NUGET_USER }}   # nuget.org username (profile name), NOT email
+      # Exchange the GitHub OIDC token for a short-lived nuget.org API key.
+      # Done right before push: the key is valid for only 1 hour.
+      - name: NuGet login (OIDC → temporary API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
 
-    - name: Push to NuGet
-      run: >-
-        dotnet nuget push "artifacts/*.nupkg"
-        --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
-        --source https://api.nuget.org/v3/index.json
-        --skip-duplicate
+      - name: Push to NuGet
+        run: >
+          dotnet nuget push "artifacts/*.nupkg"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
+
+      # Create the matching v<version> release/tag so the repo's release history
+      # stays in sync with what was just published (skipped if it already exists).
+      - name: Create GitHub release
+        shell: bash   # the job runs on windows-latest, where the default shell is pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/MangaUpdates/MangaUpdates.csproj)
+          tag="v$version"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "Release $tag already exists - nothing to do."
+          else
+            gh release create "$tag" --title "$tag" --generate-notes
+          fi
