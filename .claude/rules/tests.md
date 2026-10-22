@@ -34,8 +34,8 @@ paths:
 ## Model gotcha the round-trip theory catches
 
 A model whose ctor params can't bind 1:1 to its properties — a nullable param for a non-nullable
-property (`TimeV1`; see the net48 `DateTime = default` note in CLAUDE.md and
-`guidelines/refit-api-client-sdk.md`) or a reserved-word param renamed with an underscore
-(`_public` in `ListsModelV1Options`, `_return` in `MiscSlowTransactionStatusResponseV1`) — must
-carry a `[JsonConstructor] protected Xxx() { }`, or STJ throws a ctor-binding
-`InvalidOperationException` as soon as a populated payload is deserialized.
+property (`TimeV1`; see the net48 `DateTime = default` note in CLAUDE.md) or a reserved-word param
+renamed with an underscore (`_public` in `ListsModelV1Options`, `_return` in
+`MiscSlowTransactionStatusResponseV1`) — must carry a `[JsonConstructor] protected Xxx() { }`, or
+STJ throws a ctor-binding `InvalidOperationException` as soon as a populated payload is
+deserialized.
