@@ -11,8 +11,6 @@ distributed as the `MangaUpdates` NuGet package. Built on **[Refit](https://gith
 is a typed proxy over the live API, kept in sync with the vendored OpenAPI spec **manually** — there
 is no code generator in this repo. Current: API 1.0.0, SDK 1.0.0.1.
 
-Reference implementation: FireflyIII.Net.
-
 ## Commands
 
 ```bash
@@ -61,8 +59,7 @@ Three namespaces under `src/MangaUpdates/`:
 - **`MangaUpdates.Client`** (`Client/*.cs`) — the plumbing:
   - `ServiceCollectionExtensions.AddMangaUpdates(...)` — the **only supported entry point**;
     registers all 17 Refit clients (`AddRefitClient`), base URL and the two handlers. This DI layer
-    is a deliberate deviation from FireflyIII.Net's "no wrapper" shape — it predates that convention
-    and is the shipped public surface. `RestService.For<T>` with `MangaUpdatesJson.Options` remains
+    is deliberate: it is the shipped public surface. `RestService.For<T>` with `MangaUpdatesJson.Options` remains
     supported for non-DI consumers.
   - `BearerTokenHandler` — `Authorization: Bearer` from `MangaUpdatesOptions.AccessToken`.
   - `RetryHandler` — Polly v8 `ResiliencePipeline` retrying transient failures.
