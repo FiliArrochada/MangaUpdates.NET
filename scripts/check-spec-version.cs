@@ -26,7 +26,7 @@
 using System.Diagnostics;
 using System.Text;
 
-const string UserAgent = "MangaUpdates.NET-spec-check/1.0 (+https://github.com/filipe-silva/MangaUpdates.NET)";
+const string UserAgent = "MangaUpdates.NET-spec-check/1.0 (+https://github.com/FiliArrochada/MangaUpdates.NET)";
 
 string specUrl = Environment.GetEnvironmentVariable("SPEC_URL")
                  ?? "https://api.mangaupdates.com/openapi.yaml";

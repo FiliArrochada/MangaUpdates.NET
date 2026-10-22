@@ -12,7 +12,7 @@ run-name: ${{ inputs.version && format('Release v{0} to NuGet', inputs.version) 
 #
 # Publishing uses nuget.org Trusted Publishing (OIDC) — no long-lived API key.
 # nuget.org side: a Trusted Publishing policy under the profile with
-#   Repository Owner: filipe-silva
+#   Repository Owner: FiliArrochada
 #   Repository: MangaUpdates.NET
 #   Workflow File: release.yml
 # GitHub side: the only secret needed is NUGET_USER = the nuget.org profile name (NOT the email).

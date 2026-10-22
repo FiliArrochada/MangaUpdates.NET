@@ -5,7 +5,7 @@
 		<AssemblyName>MangaUpdates</AssemblyName>
 		<PackageId>MangaUpdates</PackageId>
 		<OutputType>Library</OutputType>
-		<Authors>filipe-silva</Authors>
+		<Authors>FiliArrochada</Authors>
 		<Company>MangaUpdates.NET</Company>
 		<AssemblyTitle>MangaUpdates API client</AssemblyTitle>
 		<Description>A type-safe C# client for the MangaUpdates API, built on Refit.</Description>
@@ -16,8 +16,8 @@
          4th (revision) component for client-only fixes against the same API version. -->
 		<Version>1.0.0.1</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageProjectUrl>https://github.com/filipe-silva/MangaUpdates.NET</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/filipe-silva/MangaUpdates.NET.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/FiliArrochada/MangaUpdates.NET</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/FiliArrochada/MangaUpdates.NET.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>Refit 15; multi-targets net10.0 and net48. Same MangaUpdates API surface (1.0.0).</PackageReleaseNotes>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

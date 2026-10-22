@@ -1,6 +1,6 @@
 # MangaUpdates.NET
 
-[![CI](https://github.com/filipe-silva/MangaUpdates.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/filipe-silva/MangaUpdates.NET/actions/workflows/ci.yml)
+[![CI](https://github.com/FiliArrochada/MangaUpdates.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/FiliArrochada/MangaUpdates.NET/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/MangaUpdates.svg)](https://www.nuget.org/packages/MangaUpdates/)
 
 A type-safe C# client for the [MangaUpdates API](https://api.mangaupdates.com/), built on [Refit](https://github.com/reactiveui/refit) and `System.Text.Json`.
